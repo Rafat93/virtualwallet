@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'nif',
+        'photo',
+        'type',
     ];
 
     /**
@@ -36,4 +42,37 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function typeToStr()
+    {
+        switch ($this->type) {
+            case 'a':
+                return 'Administrator';
+            case 'o':
+                return 'Operator';
+            case 'u':
+                return 'user';
+        }
+
+        return 'Unknown';
+    }
+
+    public function nifIsNull(){
+        if($this->nif == null){
+            return "-";
+        }
+        return $this->nif;
+    }
+
+    public function activeToStr()
+    {
+        switch ($this->ativo) {
+            case 1:
+                return 'Active';
+            case 0:
+                return 'Inactive';
+        }
+
+        return -1;
+    }
 }
