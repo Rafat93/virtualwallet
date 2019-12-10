@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row" id="row" style="margin-top: 56px;">
                 <div class="col">
-                    <img id="imagem" src="images/computerWallet.png" alt="virtual wallet" style="z-index: -1;" width="500" height="500">
+                    <img id="imagem" src="./images/computerWallet.png" alt="virtual wallet" style="z-index: -1;" width="500" height="500">
                 </div>
                 <div class="col">
                     <div class="row">
@@ -34,7 +34,7 @@
                     <p class="col_header">Payments</p>
                     <p class="col_body">With VirtualWallet you can do all your payments, with high safety, to other VirtualWallet users or
                     to any external entity in just a few seconds.</p>
-                    <img src="images/payments.png" width="120" height="120">
+                    <img src="./images/payments.png" width="120" height="120">
                 </div>
                 <div class="col" align="center">
                     <p class="col_header">Movements</p>
@@ -45,7 +45,7 @@
                     <p class="col_header">Statistics</p>
                     <p class="col_body">With VirtualWallet you can do all your payments, with high safety, to other VirtualWallet users or
                         to any external entity in just a few seconds.</p>
-
+                    <img src="./images/statistics.png" width="120" height="120">
                 </div>
             </div>
         </div>
