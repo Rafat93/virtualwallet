@@ -21,6 +21,7 @@ Route::middleware(['auth:api'])->group(function (){
    //wallet
     Route::get('wallets','Api\WalletController@index');
     Route::get('users/{id}/wallet/my','Api\WalletController@getMyWallet');
+    Route::get('users/{id}/wallet/my_balance','Api\WalletController@getMyBalance');
 
     //movements
     Route::get('movements','Api\MovementController@index');
