@@ -1,36 +1,37 @@
-require('../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/bootstrap');
+require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-import { library } from '@fortawesome/fontawesome-svg-core'
+/*import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faUserSecret);
 library.add(faWallet);
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('font-awesome-icon', FontAwesomeIcon);*/
 
-import store from "../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/stores/global-store";
+import store from "./stores/global-store";
 
-import NavBarComponent from '../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/components/user/navbar.vue';
+
+import NavBarComponent from './components/user/navbar.vue';
 const navbar = Vue.component('navbar', NavBarComponent);
 
-import LoginComponent from '../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/components/login.vue';
+import LoginComponent from './components/login.vue';
 const login = Vue.component('login', LoginComponent);
 
-import WelcomeComponent from '../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/components/welcome.vue';
+import WelcomeComponent from './components/welcome.vue';
 const welcome = Vue.component('welcome', WelcomeComponent);
 
-import RegisterComponent from '../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/components/register.vue';
+import RegisterComponent from './components/register.vue';
 const register  = Vue.component('register', RegisterComponent);
 
-import NavBarWelcomeComponent from '../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/components/navbar_welcome.vue';
+import NavBarWelcomeComponent from './components/navbar_welcome.vue';
 const navbarwelcome  = Vue.component('navbarwelcome', NavBarWelcomeComponent);
 
-import HomePage from '../../../../../Users/Joana/Desktop/PROJETO_CERTO/resources/js/components/user/home.vue';
+import HomePage from './components/user/home.vue';
 const homePage = Vue.component('homePage',HomePage);
 
 Vue.config.productionTip = false;
