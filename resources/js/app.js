@@ -10,33 +10,27 @@ Vue.use(Toasted, {
     type: "info"
 });
 
-/*import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faWallet } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faUserSecret);
-library.add(faWallet);
-Vue.component('font-awesome-icon', FontAwesomeIcon);*/
-
 import store from "./stores/global-store";
 
 import MovementCompenent from './components/movement/movement.vue';
 const movements = Vue.component('movements',MovementCompenent);
 
-import NavBarComponent from './components/user/navbar.vue';
+import RegisterExpenseComponent from './components/user/register_expense.vue';
+const registerExpense = Vue.component('registerExpense', RegisterExpenseComponent);
+
+import NavBarComponent from './components/navbar.vue';
 const navbar = Vue.component('navbar', NavBarComponent);
 
-import LoginComponent from './components/login.vue';
+import LoginComponent from './components/all_users/login.vue';
 const login = Vue.component('login', LoginComponent);
 
-import WelcomeComponent from './components/welcome.vue';
+import WelcomeComponent from './components/all_users/welcome.vue';
 const welcome = Vue.component('welcome', WelcomeComponent);
 
-import RegisterComponent from './components/register.vue';
+import RegisterComponent from './components/all_users/register.vue';
 const register  = Vue.component('register', RegisterComponent);
 
-import NavBarWelcomeComponent from './components/navbar_welcome.vue';
+import NavBarWelcomeComponent from './components/all_users/navbar_welcome.vue';
 const navbarwelcome  = Vue.component('navbarwelcome', NavBarWelcomeComponent);
 
 import HomePage from './components/user/home.vue';
@@ -44,6 +38,8 @@ const homePage = Vue.component('homePage',HomePage);
 
 Vue.config.productionTip = false;
 
+import StatisticsHomePage from './components/statistics/home_statistics.vue';
+const statisticsHomePage = Vue.component('statisticsHomePage', StatisticsHomePage);
 
 const routes = [
     { path: '/', redirect: '/welcome' },
@@ -53,6 +49,8 @@ const routes = [
     { path: '/navbar', component: navbar},
     { path: '/home', component: homePage},
     { path: '/movements', component: movements },
+    { path: '/register_expense', component: registerExpense },
+    { path: '/statistics', component: statisticsHomePage },
 ];
 
 const router = new VueRouter({

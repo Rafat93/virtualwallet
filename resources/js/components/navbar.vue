@@ -5,9 +5,6 @@
             </div>
             <div class="mx-auto order-0">
                 <a class="navbar-brand mx-auto" style="color: white">VirtualWallet</a>
-                <button class="navbar-toggler" data-target=".dual-collapse2" data-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
             </div>
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 
@@ -25,12 +22,12 @@
                     </router-link>
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
+                    <router-link class="nav-link" to="/register_expense">
                         <i class="fa fa-shopping-cart fa-2x"></i>
                         <span class="nav-text">
                                     Register Expense
                                 </span>
-                    </a>
+                    </router-link>
 
                 </li>
                 <li class="has-subnav">
@@ -43,12 +40,20 @@
 
                 </li>
                 <li>
-                    <a href="#">
+                    <router-link class="nav-link" to="/statistics">
                         <i class="fa fa-bar-chart-o fa-2x"></i>
                         <span class="nav-text">
                                     Graphs and Statistics
                                 </span>
-                    </a>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link class="nav-link" to="/profile">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+                                    Profile
+                                </span>
+                    </router-link>
                 </li>
 
             </ul>

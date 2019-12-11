@@ -1,18 +1,12 @@
 <template>
     <div>
-        <div style="">
-            <navbar/>
-        </div>
-
-
-        <div style="margin-left: 60px; overflow-y: auto; height: 100vh;">
+        <navbar/>
+        <div class="inside_content">
             <div class="jumbotron">
                 <h1>{{ title }}</h1>
             </div>
             <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
         </div>
-
-
     </div>
 </template>
 <script type="text/javascript">
@@ -51,5 +45,11 @@
 </script>
 
 <style scoped>
+    .inside_content{
+        margin-top: 56px;
+        margin-left: 60px;
+        overflow-y: auto;
+        height: 92vh;
+    }
 
 </style>
