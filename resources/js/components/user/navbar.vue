@@ -34,12 +34,12 @@
 
             </li>
             <li class="has-subnav">
-                <a href="#">
+                <router-link to="/movements" class="nav-link">
                     <i class="fa fa-list fa-2x"></i>
                     <span class="nav-text">
                             Movements
                         </span>
-                </a>
+                </router-link>
 
             </li>
             <li>
@@ -55,7 +55,7 @@
 
         <ul class="logout">
             <li>
-                <a href="#">
+                <a v-on:click.prevent="logout">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                             Logout
@@ -65,9 +65,25 @@
         </ul>
     </nav>
     </div>
-
-
 </template>
+<script type="text/javascript">
+    export default {
+        methods: {
+            logout() {
+                axios
+                    .post("api/logout")
+                    .then(response => {
+                        this.$store.commit("clearUserAndToken");
+                        this.$router.push('/welcome');
+                    })
+                    .catch(error => {
+                        this.$store.commit("clearUserAndToken");
+                        console.log(error);
+                    });
+            }
+        }
+    };
+</script>
 <style>
     @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 

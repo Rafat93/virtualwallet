@@ -22,8 +22,6 @@
                     <div class="row">
                         <p id="subtitle">{{numberWallets}}</p>
                     </div>
-
-
                 </div>
             </div>
             <div class="row justify-content-center" >
@@ -69,6 +67,7 @@
         },
         mounted(){
             this.getNumberWallets();
+            console.log("Welcome page"+this.$store.state.token);
         }
     }
 </script>

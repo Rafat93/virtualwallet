@@ -37,11 +37,13 @@ Route::middleware(['auth:api','json.response'])->group(function (){
 
 });
 
+Route::middleware(['json.response'])->group(function () {
 //-------------------------Wallet Routes--------------------------------------
-Route::get('wallets/number','Api\WalletController@getNumberOfWallets');
+    Route::get('wallets/number', 'Api\WalletController@getNumberOfWallets');
 //-------------------------user Routes--------------------------------------
-Route::get('users/emailavailable', 'Api\UserController@emailAvailable');
+    Route::get('users/emailavailable', 'Api\UserController@emailAvailable');
 //------------------------Auth Routes---------------------------------------
-Route::post('login', 'Api\AuthController@login')->name('login');
-
+    Route::post('login', 'Api\AuthController@login')->name('login');
+    Route::post('/register', 'Api\AuthController@register')->name('register');
+});
 //--------------------------------------------------------------------------

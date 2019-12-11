@@ -15,6 +15,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);*/
 
 import store from "./stores/global-store";
 
+import MovementCompenent from './components/movement/movement.vue';
+const movements = Vue.component('movements',MovementCompenent);
 
 import NavBarComponent from './components/user/navbar.vue';
 const navbar = Vue.component('navbar', NavBarComponent);
@@ -44,10 +46,11 @@ const routes = [
     { path: '/register', component: register},
     { path: '/navbar', component: navbar},
     { path: '/home', component: homePage},
+    { path: '/movements', component: movements },
 ];
 
 const router = new VueRouter({
-    mode: 'history',
+    //mode: 'history',
     routes:routes
 });
 

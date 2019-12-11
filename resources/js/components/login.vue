@@ -55,14 +55,17 @@
                     .post("api/login", this.user)
                     .then(response => {
                         this.$store.commit("setToken", response.data.access_token);
-                        /*return axios.get("api/users/me");*/
-                        this.$router.push('/home');
+                        return axios.get("api/users/me");
+
                     })
                     .then(response => {
                         this.$store.commit("setUser", response.data.data);
                         this.typeofmsg = "alert-success";
                         this.message = "user authenticated correctly";
                         this.showMessage = true;
+                        //console.log(this.$store.state.token);
+                        this.$router.push('/home');
+
                     })
                     .catch(error => {
                         this.$store.commit("clearUserAndToken");
