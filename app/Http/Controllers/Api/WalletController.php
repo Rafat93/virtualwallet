@@ -24,12 +24,12 @@ class WalletController extends Controller
 
     public function getMyWallet($id){
         $user = User::findOrFail($id);
-        return WalletResource::collection(Wallet::query()->where('email',$user->email));
+        return WalletResource::collection(Wallet::where('email',$user->email)->get());
     }
 
     public function getMyBalance($id){
         $user = User::findOrFail($id);
-        $wallet= WalletResource::collection(Wallet::query()->where('email',$user->email));
-        return $wallet->balance;
+        $wallet= Wallet::where('email',$user->email)->get();
+        return $wallet[0]->balance;
     }
 }
