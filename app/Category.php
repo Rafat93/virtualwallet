@@ -6,5 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'type',
+    ];
+
+    public function typeToStr()
+    {
+        switch ($this->type) {
+            case 'i':
+                return 'Income';
+            case 'e':
+                return 'Expense';
+        }
+
+        return 'Unknown';
+    }
 }
