@@ -2,11 +2,10 @@
     <div id="navbarwelcome">
         <nav  class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-
             </div>
             <div class="mx-auto order-0">
                 <a class="navbar-brand mx-auto" style="color: white">VirtualWallet</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <button class="navbar-toggler" data-target=".dual-collapse2" data-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -14,57 +13,59 @@
 
             </div>
         </nav>
-        <div class="area"></div><nav class="main-menu">
-        <ul>
-            <li>
-                <router-link to="/home" class="nav-link">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                            Home
-                        </span>
-                </router-link>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-                    <i class="fa fa-shopping-cart fa-2x"></i>
-                    <span class="nav-text">
-                            Register Expense
-                        </span>
-                </a>
+        <div class="area" ></div>
+        <nav class="main-menu">
+            <ul>
+                <li>
+                    <router-link class="nav-link" to="/home">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                                    Home
+                                </span>
+                    </router-link>
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart fa-2x"></i>
+                        <span class="nav-text">
+                                    Register Expense
+                                </span>
+                    </a>
 
-            </li>
-            <li class="has-subnav">
-                <router-link to="/movements" class="nav-link">
-                    <i class="fa fa-list fa-2x"></i>
-                    <span class="nav-text">
-                            Movements
-                        </span>
-                </router-link>
+                </li>
+                <li class="has-subnav">
+                    <router-link class="nav-link" to="/movements">
+                        <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
+                                    Movements
+                                </span>
+                    </router-link>
 
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-bar-chart-o fa-2x"></i>
-                    <span class="nav-text">
-                            Graphs and Statistics
-                        </span>
-                </a>
-            </li>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o fa-2x"></i>
+                        <span class="nav-text">
+                                    Graphs and Statistics
+                                </span>
+                    </a>
+                </li>
 
-        </ul>
+            </ul>
 
-        <ul class="logout">
-            <li>
-                <a v-on:click.prevent="logout">
-                    <i class="fa fa-power-off fa-2x"></i>
-                    <span class="nav-text">
-                            Logout
-                        </span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+            <ul class="logout">
+                <li>
+                    <a v-on:click.prevent="logout">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                                    Logout
+                                </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
+
 </template>
 <script type="text/javascript">
     export default {
@@ -205,6 +206,7 @@
         background-color:#5fa2db;
     }
     .area {
+
         float: left;
         background: #e2e2e2;
         width: 100%;
@@ -218,9 +220,9 @@
     }
 
 
-    #navbarwelcome{
+    /*#navbarwelcome{
         display: block;
-    }
+    }*/
     .navbar{
         overflow: hidden;
         position: fixed; /* Set the navbar to fixed position */

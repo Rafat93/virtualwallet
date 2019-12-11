@@ -1,11 +1,17 @@
 <template>
     <div>
-        <navbar/>
-        <div class="jumbotron">
-            <h1>{{ title }}</h1>
+        <div style="">
+            <navbar/>
         </div>
 
-        <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
+
+        <div style="margin-left: 60px; overflow-y: auto; height: 100vh;">
+            <div class="jumbotron">
+                <h1>{{ title }}</h1>
+            </div>
+            <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
+        </div>
+
 
     </div>
 </template>
