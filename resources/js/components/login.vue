@@ -64,6 +64,7 @@
                         this.message = "user authenticated correctly";
                         this.showMessage = true;
                         //console.log(this.$store.state.token);
+                        this.$toasted.show("Authenticated!");
                         this.$router.push('/home');
 
                     })

@@ -74,7 +74,9 @@
                     .post("api/logout")
                     .then(response => {
                         this.$store.commit("clearUserAndToken");
+                        this.$toasted.show("Logout Success!");
                         this.$router.push('/welcome');
+                        console.log("User Logged Out");
                     })
                     .catch(error => {
                         this.$store.commit("clearUserAndToken");

@@ -67,7 +67,6 @@
         },
         mounted(){
             this.getNumberWallets();
-            console.log("Welcome page"+this.$store.state.token);
         }
     }
 </script>

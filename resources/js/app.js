@@ -1,8 +1,14 @@
 require('./bootstrap');
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Toasted from 'vue-toasted';
 
 Vue.use(VueRouter);
+Vue.use(Toasted, {
+    position: "bottom-center",
+    duration: 5000,
+    type: "info"
+});
 
 /*import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
@@ -54,8 +60,24 @@ const router = new VueRouter({
     routes:routes
 });
 
+router.beforeEach((to, from, next) => {
+    if (to.name == "logout") {
+        if (!store.state.user) {
+            next("/login");
+            return;
+        }
+    }
+    next();
+});
+
 
 const app = new Vue({
     router,
     store,
+    created() {
+        console.log("-----");
+        console.log(this.$store.state.user);
+        this.$store.commit("loadTokenAndUserFromSession");
+        console.log(this.$store.state.user);
+    }
 }).$mount('#app');
