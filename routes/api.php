@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth:api'])->group(function (){
+Route::middleware(['auth:api','json.response'])->group(function (){
    //wallet
     Route::get('wallets','Api\WalletController@index');
     Route::get('users/{id}/wallet/my','Api\WalletController@getMyWallet');
@@ -33,7 +33,7 @@ Route::middleware(['auth:api'])->group(function (){
     Route::put('users/{id}', 'Api\UserController@update');
     Route::delete('users/{id}', 'Api\UserController@destroy');
 
-    Route::post('logout', 'Api\LoginController@logout');
+    Route::post('logout', 'Api\AuthController@logout');
 
 });
 
@@ -42,6 +42,6 @@ Route::get('wallets/number','Api\WalletController@getNumberOfWallets');
 //-------------------------user Routes--------------------------------------
 Route::get('users/emailavailable', 'Api\UserController@emailAvailable');
 //------------------------Auth Routes---------------------------------------
-Route::post('login', 'Api\LoginController@login')->name('login');
+Route::post('login', 'Api\AuthController@login')->name('login');
 
 //--------------------------------------------------------------------------
