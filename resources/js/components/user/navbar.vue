@@ -26,9 +26,9 @@
             </li>
             <li class="has-subnav">
                 <a href="#">
-                    <i class="fa fa-laptop fa-2x"></i>
+                    <i class="fa fa-shopping-cart fa-2x"></i>
                     <span class="nav-text">
-                            Stars Components
+                            Register Expense
                         </span>
                 </a>
 
@@ -42,15 +42,6 @@
                 </a>
 
             </li>
-            <li class="has-subnav">
-                <a href="#">
-                    <i class="fa fa-folder-open fa-2x"></i>
-                    <span class="nav-text">
-                            Pages
-                        </span>
-                </a>
-
-            </li>
             <li>
                 <a href="#">
                     <i class="fa fa-bar-chart-o fa-2x"></i>
@@ -59,38 +50,7 @@
                         </span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-font fa-2x"></i>
-                    <span class="nav-text">
-                           Quotes
-                        </span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-table fa-2x"></i>
-                    <span class="nav-text">
-                            Tables
-                        </span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-map-marker fa-2x"></i>
-                    <span class="nav-text">
-                            Maps
-                        </span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-info fa-2x"></i>
-                    <span class="nav-text">
-                            Documentation
-                        </span>
-                </a>
-            </li>
+
         </ul>
 
         <ul class="logout">
