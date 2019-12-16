@@ -32,7 +32,7 @@
                 </form>
             </div>
         </div>
-        <div v-if="controlo == 0"class="spinner-border" id="spinner" role="status" >
+        <div v-if="controlo == 0"class="spinner-border text-primary" id="spinner" role="status" >
             <span class="sr-only">Loading...</span>
         </div>
     </div>

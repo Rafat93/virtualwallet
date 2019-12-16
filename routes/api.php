@@ -33,6 +33,12 @@ Route::middleware(['auth:api','json.response'])->group(function (){
     Route::put('users/{id}', 'Api\UserController@update');
     Route::delete('users/{id}', 'Api\UserController@destroy');
 
+
+    //category
+    Route::get('category', 'Api\CategoryController@index');
+    Route::get('categories', 'Api\CategoryController@getExpenseTypes');
+
+
     Route::post('logout', 'Api\AuthController@logout');
 
 });
@@ -40,13 +46,16 @@ Route::middleware(['auth:api','json.response'])->group(function (){
 Route::middleware(['json.response'])->group(function () {
 //-------------------------Wallet Routes--------------------------------------
     Route::get('wallets/number', 'Api\WalletController@getNumberOfWallets');
+
+
 //-------------------------user Routes--------------------------------------
     Route::get('users/emailavailable', 'Api\UserController@emailAvailable');
 //------------------------Auth Routes---------------------------------------
     Route::post('login', 'Api\AuthController@login')->name('login');
     Route::post('/register', 'Api\AuthController@register')->name('register');
+
 });
 //-----------------------------Category Routes---------------------------------------------
-    Route::get('categories','Auth\CategoryController@getExpenseTypes');
-    Route::get('category', 'Auth\CategoryController@index');
+
+
 //--------------------------------------------------------------------
