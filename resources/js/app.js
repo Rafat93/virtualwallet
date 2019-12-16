@@ -15,6 +15,9 @@ import store from "./stores/global-store";
 import MovementCompenent from './components/movement/movement.vue';
 const movements = Vue.component('movements',MovementCompenent);
 
+import ProfileComponent from './components/user/profile.vue';
+const profile = Vue.component('profile', ProfileComponent);
+
 import RegisterExpenseComponent from './components/user/register_expense.vue';
 const registerExpense = Vue.component('registerExpense', RegisterExpenseComponent);
 
@@ -51,6 +54,8 @@ const routes = [
     { path: '/movements', component: movements },
     { path: '/register_expense', component: registerExpense },
     { path: '/statistics', component: statisticsHomePage },
+    { path: '/profile', component: profile },
+
 ];
 
 const router = new VueRouter({

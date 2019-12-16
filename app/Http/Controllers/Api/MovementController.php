@@ -11,6 +11,6 @@ class MovementController extends Controller
 {
     public function index(Request $request)
     {
-        return MovementResource::collection(Movement::paginate(50));
+        return MovementResource::collection(Movement::paginate(10));
     }
 }

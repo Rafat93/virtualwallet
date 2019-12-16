@@ -1,7 +1,8 @@
 <template>
     <div id="page">
         <navbarwelcome></navbarwelcome>
-        <div class="login-page" id="body">
+
+        <div v-if="controlo == 1" class="login-page" id="body">
             <div class="form">
                 <div class="alert" :class="typeofmsg" v-if="showMessage">
                     <button type="button" class="close-btn" v-on:click="showMessage = false">
@@ -31,6 +32,9 @@
                 </form>
             </div>
         </div>
+        <div v-if="controlo == 0"class="spinner-border" id="spinner" role="status" >
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 
 
@@ -43,6 +47,7 @@
                     email: "",
                     password: ""
                 },
+                controlo: 1,
                 typeofmsg: "alert-success",
                 showMessage: false,
                 message: ""
@@ -51,6 +56,7 @@
         methods: {
             login() {
                 this.showMessage = false;
+                this.controlo = 0;
                 axios
                     .post("api/login", this.user)
                     .then(response => {
@@ -59,6 +65,7 @@
 
                     })
                     .then(response => {
+
                         this.$store.commit("setUser", response.data.data);
                         this.typeofmsg = "alert-success";
                         this.message = "user authenticated correctly";
@@ -69,6 +76,7 @@
 
                     })
                     .catch(error => {
+                        this.controlo = 1;
                         this.$store.commit("clearUserAndToken");
                         this.typeofmsg = "alert-danger";
                         this.message = "Invalid credentials";
@@ -91,6 +99,13 @@
     padding: 8% 0 0;
     margin: auto;
 }
+#spinner{
+    /*margin-top: 100px;
+    alignment: center;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 .form {
     position: relative;
     z-index: 1;
@@ -101,6 +116,7 @@
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 .form input {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -126,6 +142,7 @@
     transition: all 0.3 ease;
     cursor: pointer;
 }
+
 .form button:hover,.form button:active,.form button:focus {
     background: #43A047;
 }

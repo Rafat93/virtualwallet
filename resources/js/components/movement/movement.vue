@@ -2,8 +2,8 @@
     <div>
         <navbar/>
         <div class="inside_content">
-            <div class="jumbotron">
-                <h1>{{ title }}</h1>
+            <div class="content_title">
+                List of Movements
             </div>
             <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
         </div>
@@ -50,6 +50,12 @@
         margin-left: 60px;
         overflow-y: auto;
         height: 92vh;
+    }
+    .content_title{
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 10px;
+        font-family: "Roboto", sans-serif;
     }
 
 </style>

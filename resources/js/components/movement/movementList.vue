@@ -45,6 +45,7 @@
 <script type="text/javascript">
     export default {
         name: "movementList",
+
         props: ['movements'],
         methods: {
             getDataPaginate: function (page = 1) {

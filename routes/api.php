@@ -46,4 +46,7 @@ Route::middleware(['json.response'])->group(function () {
     Route::post('login', 'Api\AuthController@login')->name('login');
     Route::post('/register', 'Api\AuthController@register')->name('register');
 });
-//--------------------------------------------------------------------------
+//-----------------------------Category Routes---------------------------------------------
+    Route::get('categories','Auth\CategoryController@getExpenseTypes');
+    Route::get('category', 'Auth\CategoryController@index');
+//--------------------------------------------------------------------
