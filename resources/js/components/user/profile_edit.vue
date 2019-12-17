@@ -1,14 +1,10 @@
 <template>
-    <div>
-        <navbar/>
-        <div class="inside_content">
-            <div class="card" style="margin-left: 80px; margin-right: 80px; margin-top: 20px;">
+
+            <div class="card" style="margin-left: 80px; margin-right: 80px;">
                 <div class="card-header">
                     Personal Information
-
                 </div>
                 <div class="card-body ">
-
                     <div class="form-group">
                         <!--
                                                 <img src="/database/seeds/fotos/{{user.photo}}">
@@ -23,7 +19,7 @@
                         <p class="font-weight-normal">Email:</p>
                         <p class="font-weight-light">{{user.email}}</p>
                     </div>
-                    <div class="form-group">x
+                    <div class="form-group">
                         <p class="font-weight-normal">Password:</p>
                         <input type="password" class="form-control">
                     </div>
@@ -42,8 +38,8 @@
 
                 </div>
             </div>
-        </div>
-    </div>
+
+
 </template>
 
 <script>
@@ -90,10 +86,5 @@
 </script>
 
 <style scoped>
-    .inside_content{
-        margin-top: 56px;
-        margin-left: 60px;
-        overflow-y: auto;
-        height: 92vh;
-    }
+
 </style>

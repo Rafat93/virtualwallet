@@ -6,10 +6,10 @@
                 Profile
             </div>
 
-            <div class="card" style="margin-left: 80px; margin-right: 80px;">
+            <div class="card" style="margin-left: 80px; margin-right: 80px;" v-if="editingUser == 0">
                 <div class="card-header">
                     Personal Information
-                    <router-link to="/profile_edit" class="btn btn-sm btn-dark" style="float: right;">Edit</router-link>
+                    <button class="btn btn-sm btn-dark" style="float: right;" v-on:click="editingUser = 1">Edit</button>
                 </div>
                 <div class="card-body ">
                     <div class="form-group">
@@ -29,8 +29,12 @@
 
                 </div>
             </div>
+            <div v-if="editingUser == 1">
+                <profileEdit></profileEdit>
+            </div>
         </div>
-        <profileEdit></profileEdit>
+
+
     </div>
 </template>
 
@@ -39,6 +43,7 @@
         data: function(){
             return {
                 user: '',
+                editingUser : 0,
             }
         },
         methods: {
@@ -59,17 +64,5 @@
 </script>
 
 <style scoped>
-    .inside_content{
-        margin-top: 56px;
-        margin-left: 60px;
-        overflow-y: auto;
-        height: 92vh;
-    }
-    .content_title{
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 10px;
-        font-family: "Roboto", sans-serif;
-    }
 
 </style>

@@ -1,0 +1,7 @@
+function isAdministrator() {
+
+}
+
+function isOperator() {
+
+}

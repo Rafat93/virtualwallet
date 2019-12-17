@@ -11,6 +11,7 @@ Vue.use(Toasted, {
 });
 
 import store from "./stores/global-store";
+import frontend_functions from "./frontend_functions";
 
 import MovementCompenent from './components/movement/movement.vue';
 const movements = Vue.component('movements',MovementCompenent);
@@ -81,6 +82,7 @@ router.beforeEach((to, from, next) => {
 const app = new Vue({
     router,
     store,
+    frontend_functions,
     created() {
         console.log("-----");
         console.log(this.$store.state.user);
