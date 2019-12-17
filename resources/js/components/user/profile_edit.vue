@@ -62,8 +62,8 @@
                     console.log(this.user)});
 
             },
-            saveUser: function (user) {
-                axios.put('api/users/'+this.user, {'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+            saveUser: function () {
+                axios.put('api/users/'+this.user.id, this.user, {'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
                     .then(response=>{
                         // Copies response.data.data properties to this.user
                         // without changing this.user reference
@@ -73,7 +73,7 @@
 
             },
             cancelEdit: function (user) {
-                axios.get('api/users/'+this.user,{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+                axios.get('api/users/'+this.user.id,{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
                     .then(response=>{
                         Object.assign(this.user, response.data.data);
                         console.log(this.user)
