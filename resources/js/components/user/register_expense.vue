@@ -11,7 +11,7 @@
                     <div class="card-header">
                         Information about the expense
                     </div>
-                    <div class="card-body" style="background-color: rgba(0,142,250,0.33)">
+                    <div class="card-body" style="background-color: rgba(0,0,0,0.35)">
                         <div style="margin-right: 80px; margin-left: 80px;">
                             <div class="form-group">
                                 <label for="typeOfMovement">Type of movement</label>
@@ -103,7 +103,7 @@
         },
         mounted() {
             console.log(this.category);
-            axios.get('api/categories',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+            axios.get('api/category',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
                 .then(response=> {this.category = response.data;});
             console.log(this.category);
         },

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -14,9 +15,9 @@ class CategoryController extends Controller
     }
 
     public function getIncomeTypes(Request $request){
-        return CategoryResource::collection(Category::all()->where('type','i'));
+        return CategoryResource::collection(Category::where('type','i')->get());
     }
     public function getExpenseTypes(Request $request){
-        return CategoryResource::collection(Category::all()->where('type','e'));
+        return CategoryResource::collection(Category::where('type','e')->get());
     }
 }

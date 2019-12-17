@@ -2,28 +2,24 @@
     <div>
         <navbar/>
         <div class="inside_content">
-            <div class="content_title">
-                Profile
-            </div>
-
-            <div class="card" style="margin-left: 80px; margin-right: 80px;">
+            <div class="card" style="margin-left: 80px; margin-right: 80px; margin-top: 20px;">
                 <div class="card-header">
                     Personal Information
-                    <router-link to="/profile_edit" class="btn btn-sm btn-dark" style="float: right;">Edit</router-link>
+
                 </div>
                 <div class="card-body ">
                     <div class="form-group">
-<!--
-                        <img src="/database/seeds/fotos/{{user.photo}}">
--->
+                        <!--
+                                                <img src="/database/seeds/fotos/{{user.photo}}">
+                        -->
                     </div>
 
                     <p class="font-weight-normal">Name:</p>
-                    <p class="font-weight-light" >{{user.name}}</p>
+                    <input type="text" v-model="user.name"  class="form-control" >
                     <p class="font-weight-normal">Email:</p>
                     <p class="font-weight-light" >{{user.email}}</p>
                     <p class="font-weight-normal">NIF:</p>
-                    <p class="font-weight-light" >{{user.nif}}</p>
+                    <input type="text" v-model="user.nif"  class="form-control" >
                     <p class="font-weight-normal">Type:</p>
                     <p class="font-weight-light" >{{user.type}}</p>
 
@@ -34,7 +30,7 @@
 </template>
 
 <script>
-       export default {
+    export default {
         data: function(){
             return {
                 user: '',
@@ -64,11 +60,4 @@
         overflow-y: auto;
         height: 92vh;
     }
-    .content_title{
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 10px;
-        font-family: "Roboto", sans-serif;
-    }
-
 </style>

@@ -44,6 +44,9 @@ Vue.config.productionTip = false;
 import StatisticsHomePage from './components/statistics/home_statistics.vue';
 const statisticsHomePage = Vue.component('statisticsHomePage', StatisticsHomePage);
 
+import ProfileEdit from './components/user/profile_edit.vue';
+const profileEdit = Vue.component('profileEdit', ProfileEdit);
+
 const routes = [
     { path: '/', redirect: '/welcome' },
     { path: '/login', component: login},
@@ -55,6 +58,7 @@ const routes = [
     { path: '/register_expense', component: registerExpense },
     { path: '/statistics', component: statisticsHomePage },
     { path: '/profile', component: profile },
+    { path: '/profile_edit', component: profileEdit },
 
 ];
 
