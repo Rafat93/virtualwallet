@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\Category as CategoryResource;
-use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {

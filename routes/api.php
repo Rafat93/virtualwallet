@@ -25,6 +25,7 @@ Route::middleware(['auth:api','json.response'])->group(function (){
 
     //movements
     Route::get('movements','Api\MovementController@index');
+    Route::get('users/{id}/movements','Api\MovementController@getMyMovements');
 
     //user
     Route::get('users/me', 'Api\UserController@myProfile');

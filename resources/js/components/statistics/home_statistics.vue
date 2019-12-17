@@ -2,7 +2,7 @@
     <div>
         <navbar/>
         <div class="inside_content">
-
+                Component Estatisticas
         </div>
     </div>
 </template>
