@@ -55,6 +55,16 @@
                                 </span>
                     </router-link>
                 </li>
+                <div v-if="type === 'Administrator'">
+                    <li>
+                        <router-link class="nav-link" to="/profile">
+                            <i class="fa fa-suitcase fa-2x"></i>
+                            <span class="nav-text">
+                                    Create Account
+                                </span>
+                        </router-link>
+                    </li>
+                </div>
 
             </ul>
 
@@ -64,7 +74,7 @@
                         <i class="fa fa-power-off fa-2x"></i>
                         <span class="nav-text">
                                     Logout
-                                </span>
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -74,7 +84,23 @@
 </template>
 <script type="text/javascript">
     export default {
+        data: function(){
+            return {
+                type: '',
+                user: '',
+
+            }
+        },
+
         methods: {
+            typeOfUser: function(){
+
+                axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
+                    .then(response=>{this.user = response.data.data;
+                        console.log(this.user);
+                        this.type = this.user.type;});
+
+            },
             logout() {
                 axios
                     .post("api/logout")
@@ -88,7 +114,11 @@
                         this.$store.commit("clearUserAndToken");
                         console.log(error);
                     });
-            }
+            },
+
+        },
+        mounted() {
+            this.typeOfUser();
         }
     };
 </script>

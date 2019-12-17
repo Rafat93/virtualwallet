@@ -1,10 +1,10 @@
 <template>
-    <navbar></navbar>
+
 </template>
 
 <script>
     export default {
-        name: "authenticated"
+        name: "create_user"
     }
 </script>
 

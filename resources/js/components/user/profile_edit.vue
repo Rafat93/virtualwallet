@@ -31,6 +31,7 @@
                         <p class="font-weight-normal">Type:</p>
                         <p class="font-weight-light" >{{user.type}}</p>
                     </div>
+
                     <div class="form-group" style="text-align: center;">
                         <a v-on:click.prevent="saveUser(user)" class="btn btn-success">Save</a>
                         <a v-on:click.prevent="cancelEdit(user)" class="btn btn-danger">Cancel</a>
@@ -56,6 +57,7 @@
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data;
                     console.log(this.user)});
+                this.$frontend_functions.isAdministrator();
 
             },
             saveUser: function () {
