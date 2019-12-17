@@ -42,8 +42,9 @@ class UserController extends Controller
         return response()->json(new UserResource($user), 201);
     }
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, $id)
     {
+        $user = User::findOrFail($id);
         $user->fill($request->validated());
         $user->save();
         return new UserResource($user);

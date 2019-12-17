@@ -75,4 +75,8 @@ class User extends Authenticatable
 
         return -1;
     }
+
+    public function  isAdmin(){
+        return strcmp($this->type ,'a')==0;
+    }
 }
