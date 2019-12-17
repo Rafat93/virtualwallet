@@ -102,10 +102,10 @@
         methods:{
         },
         mounted() {
-            console.log(this.category);
-            axios.get('api/category',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
-                .then(response=> {this.category = response.data;});
-            console.log(this.category);
+
+            axios.get('api/categories',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+                .then(response=> {this.category = response.data.data; console.log(response)});
+
         },
 
     }
