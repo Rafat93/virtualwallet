@@ -62,6 +62,7 @@
                             <div class="form-group">
                                 <label for="category_id">Category</label>
                                 <select class="form-control" id="category_id">
+                                    <option value="" selected disabled>----Select an option----</option>
                                     <option  v-for="categoria in category" v-bind:value="categoria.id">{{categoria.name}}</option>
                                 </select>
                             </div>

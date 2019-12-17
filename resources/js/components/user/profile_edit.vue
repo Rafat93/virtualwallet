@@ -8,20 +8,37 @@
 
                 </div>
                 <div class="card-body ">
+
                     <div class="form-group">
                         <!--
                                                 <img src="/database/seeds/fotos/{{user.photo}}">
                         -->
                     </div>
+                    <div class="form-group">
+                        <p class="font-weight-normal">Name:</p>
+                        <input type="text" v-model="user.name" name="name" value="" class="form-control" >
+                    </div>
 
-                    <p class="font-weight-normal">Name:</p>
-                    <input type="text" v-model="user.name"  class="form-control" >
-                    <p class="font-weight-normal">Email:</p>
-                    <p class="font-weight-light" >{{user.email}}</p>
-                    <p class="font-weight-normal">NIF:</p>
-                    <input type="text" v-model="user.nif"  class="form-control" >
-                    <p class="font-weight-normal">Type:</p>
-                    <p class="font-weight-light" >{{user.type}}</p>
+                    <div class="form-group">
+                        <p class="font-weight-normal">Email:</p>
+                        <p class="font-weight-light">{{user.email}}</p>
+                    </div>
+                    <div class="form-group">x
+                        <p class="font-weight-normal">Password:</p>
+                        <input type="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <p class="font-weight-normal">NIF:</p>
+                        <input type="text" v-model="user.nif"  class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <p class="font-weight-normal">Type:</p>
+                        <p class="font-weight-light" >{{user.type}}</p>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <a v-on:click.prevent="saveUser(user)" class="btn btn-success">Save</a>
+                        <a v-on:click.prevent="cancelEdit(user)" class="btn btn-danger">Cancel</a>
+                    </div>
 
                 </div>
             </div>
@@ -41,10 +58,29 @@
                 //console.log(this.$store.state.token);
 
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
-                    .then(response=>{this.user = response.data.data; });
-
+                    .then(response=>{this.user = response.data.data;
+                    console.log(this.user)});
 
             },
+            saveUser: function (user) {
+                axios.put('api/users/'+this.user, {'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+                    .then(response=>{
+                        // Copies response.data.data properties to this.user
+                        // without changing this.user reference
+                        Object.assign(this.user, response.data.data);
+                        console.log(this.user);
+                    });
+
+            },
+            cancelEdit: function (user) {
+                axios.get('api/users/'+this.user,{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+                    .then(response=>{
+                        Object.assign(this.user, response.data.data);
+                        console.log(this.user)
+                    });
+
+
+            }
         },
 
         mounted() {
