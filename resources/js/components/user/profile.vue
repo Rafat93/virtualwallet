@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div v-if="editingUser == 1">
-                <profileEdit></profileEdit>
+                <profileEdit v-on:done ="complete"></profileEdit>
             </div>
         </div>
 
@@ -47,6 +47,10 @@
             }
         },
         methods: {
+            complete: function(user){
+                this.editingUser = 0;
+                this.getUserInfo();
+            },
             getUserInfo: function(){
                 //console.log(this.$store.state.token);
 

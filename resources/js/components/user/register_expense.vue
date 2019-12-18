@@ -12,10 +12,10 @@
                         Information about the expense
                     </div>
                     <div class="card-body" style="background-color: rgba(0,0,0,0.35)">
-                        <div style="margin-right: 80px; margin-left: 80px;">
+                        <div style="margin-right: 150px; margin-left: 150px;">
                             <div class="form-group">
                                 <label for="typeOfMovement">Type of movement</label>
-                                <select id="typeOfMovement" name="typeOfMovement" class="form-control" v-model="transferMovement">
+                                <select id="typeOfMovement" name="typeOfMovement" class="form-control">
                                     <option value="" disabled selected>----Select a type----</option>
                                     <option value="transfer" >Transfer to other VirtualWallet</option>
                                     <option value = "payment">Payment to external entity</option>
@@ -24,7 +24,7 @@
 
                             <div v-if="transferMovement == payment" class="form-group">
                                 <label for="typeOfMovement">Type of movement</label>
-                                <select id="typeOfPayment" name="typeOfPayment" class="form-control" v-model="paymentMovement">
+                                <select id="typeOfPayment" name="typeOfPayment" class="form-control">
                                     <option value="" disabled selected>----Select a type----</option>
                                     <option value="mbPayment" >MB Payment</option>
                                     <option value = "bank">Bank Transfer</option>

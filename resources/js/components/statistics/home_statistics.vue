@@ -3,6 +3,7 @@
         <navbar/>
         <div class="inside_content">
                 Component Estatisticas
+            {{this.$store.state.user}}
         </div>
     </div>
 </template>
@@ -14,12 +15,7 @@
 </script>
 
 <style scoped>
-    .inside_content{
-        margin-top: 56px;
-        margin-left: 60px;
-        overflow-y: auto;
-        height: 92vh;
-    }
+
 
 
 </style>

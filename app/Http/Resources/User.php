@@ -20,7 +20,7 @@ class User extends JsonResource
             'name'=> $this->name,
             'email'=> $this->email,
             'password' => $this->password,
-            'nif'=> $this->nifIsNull(),
+            'nif'=> $this->nif,
             'photo'=> $this->photo,
             'type'=> $this->typeToStr(),
             'active' => $this->activeToStr(),

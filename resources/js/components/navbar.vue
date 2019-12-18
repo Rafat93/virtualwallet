@@ -55,9 +55,9 @@
                                 </span>
                     </router-link>
                 </li>
-                <div v-if="type === 'Administrator'">
+                <div v-if="this.$store.state.user.type === 'Administrator'">
                     <li>
-                        <router-link class="nav-link" to="/profile">
+                        <router-link class="nav-link" to="/create_user">
                             <i class="fa fa-suitcase fa-2x"></i>
                             <span class="nav-text">
                                     Create Account

@@ -48,6 +48,9 @@ const statisticsHomePage = Vue.component('statisticsHomePage', StatisticsHomePag
 import ProfileEdit from './components/user/profile_edit.vue';
 const profileEdit = Vue.component('profileEdit', ProfileEdit);
 
+import CreateUser from './components/administrator/create_user.vue';
+const createUser = Vue.component('createUser', CreateUser);
+
 const routes = [
     { path: '/', redirect: '/welcome' },
     { path: '/login', component: login},
@@ -60,6 +63,8 @@ const routes = [
     { path: '/statistics', component: statisticsHomePage },
     { path: '/profile', component: profile },
     { path: '/profile_edit', component: profileEdit },
+    { path: '/create_user', component: createUser},
+
 
 ];
 
