@@ -9,7 +9,7 @@
                     <input type="email" placeholder="email address" required/>
                     <input type="text" placeholder="NIF" required/>
                     <label for="inputPhoto" class="message" style="color: #333333">Please enter a photographie:</label>
-                    <input id="inputPhoto" type="file" placeholder="Photo" required>
+                    <input id="inputPhoto" type="file" placeholder="Photo">
                     <button>create</button>
                     <p class="message">Already registered? <router-link to="/login">Sign In</router-link></p>
                 </form>

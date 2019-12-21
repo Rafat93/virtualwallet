@@ -40,6 +40,8 @@ Route::middleware(['auth:api','json.response'])->group(function (){
     Route::get('categories', 'Api\CategoryController@getExpenseTypes');
 
 
+
+
     Route::post('logout', 'Api\AuthController@logout');
 
 });

@@ -2,18 +2,28 @@
     <div>
         <div>
             <div class="row" style="text-align: center">
-                <div class="col-sm">
+                <div class="col-sm form-group">
                     <label for="inputId">ID:</label>
                     <input type="number" min="0" id="inputId" name="id" ref="id">
                 </div>
-                <div class="col-sm">
-                    ola
+                <div class="form-group" >
+                    <label for="inputCategory">Category:</label>
+                    <select  id="inputCategory">
+                        <option value="" selected disabled>----Select an option----</option>
+                        <option  v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
+                    </select>
                 </div>
                 <div class="col-sm">
-                    ola
+                    <label>Type:</label>
+                    <select  id="inputType">
+                        <option value="" selected disabled>----Select an option----</option>
+                        <option value="i">Income</option>
+                        <option value="e">Expense</option>
+                    </select>
                 </div>
                 <div class="col-sm">
-                    ola
+                    <label>Email:</label>
+                    <input type="text" name="email">
                 </div>
             </div>
             <table class="table table-striped">
@@ -60,15 +70,26 @@
 <script type="text/javascript">
     export default {
         name: "movementList",
-        id: '',
+        data:function(){
+            return{
+                categories: '',
+
+            }
+        },
 
         props: ['movements'],
         methods: {
             getDataPaginate: function (page = 1) {
                 this.$emit('movements-paginate',page);
-            }
-        },
+            },
+            getCategories: function () {
+                axios.get('api/categories',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
+                    .then(response=> { this.categories = response.data.data;});
+            },
 
+        },mounted() {
+            this.getCategories();
+        }
 
 
     }
