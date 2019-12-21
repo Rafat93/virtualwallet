@@ -1,6 +1,21 @@
 <template>
     <div>
         <div>
+            <div class="row" style="text-align: center">
+                <div class="col-sm">
+                    <label for="inputId">ID:</label>
+                    <input type="number" min="0" id="inputId" name="id" ref="id">
+                </div>
+                <div class="col-sm">
+                    ola
+                </div>
+                <div class="col-sm">
+                    ola
+                </div>
+                <div class="col-sm">
+                    ola
+                </div>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -16,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="movement in movements.data" :key="movement.id">
+                    <tr v-for="movement in movements" :key="movement.id">
                         <td>{{movement.wallet_id}}</td>
                         <td>{{movement.date}}</td>
                         <td>{{movement.type}}</td>
@@ -45,13 +60,17 @@
 <script type="text/javascript">
     export default {
         name: "movementList",
+        id: '',
 
         props: ['movements'],
         methods: {
             getDataPaginate: function (page = 1) {
                 this.$emit('movements-paginate',page);
             }
-        }
+        },
+
+
+
     }
 </script>
 

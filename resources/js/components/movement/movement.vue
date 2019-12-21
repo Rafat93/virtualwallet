@@ -5,7 +5,16 @@
             <div class="content_title">
                 List of Movements
             </div>
-            <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
+            <div v-if="movements== 0">
+
+                <div class="spinner-grow" role="status" style="position: absolute;   top: 50%;    left: 50%;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div v-else>
+                <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
+            </div>
+
         </div>
     </div>
 </template>
@@ -16,12 +25,21 @@
         data: function(){
             return {
                 title: 'List Movements',
-                movements: {},
+                movements: 0,
             }
         },
         methods: {
             getMovements: function(page = 0){
-                console.log(this.$store.state.token);
+
+
+                axios.get('api/users/'+this.$store.state.user.id+'/movements',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
+                    .then(response=>{this.movements = response.data.data;
+
+                    console.log(response.data.data);
+                    console.log(this.movements)});
+
+
+
                 /*if (page == 0){
                     axios.get('api/movements',{'headers': {'Authorization': 'Bearer '+this.$store.commit('getToken')}})
                         .then(response=>{this.movements = response.data; });
@@ -30,9 +48,9 @@
                         .then(response => {
                             this.movements = response.data;})
                 }*/
-                axios.get('api/movements',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
+               /* axios.get('api/movements',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.movements = response.data; });
-
+                */
             },
         },
         components: {
