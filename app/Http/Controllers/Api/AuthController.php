@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Wallet;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,9 +16,11 @@ class AuthController extends Controller
     public function register (Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'nif' => 'required|numeric|nullable|min:9|max:9',
+            'file_foto' => 'nullable|image|mimes:jpeg,jpg|max:2048',
         ]);
 
         if ($validator->fails())
@@ -26,7 +29,14 @@ class AuthController extends Controller
         }
 
         $request['password']=Hash::make($request['password']);
-        User::create($request->toArray());
+        $input = $request->all();
+        $user = User::create($input);
+        $wallet = new Wallet;
+        $wallet->id = $user->id;
+        $wallet->email = $user->email;
+        $wallet->balance = 0;
+
+        $wallet->save();
 
         return $this->createToken($request);
 
