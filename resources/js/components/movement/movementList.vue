@@ -3,8 +3,12 @@
         <div>
             <div class="row" style="text-align: center">
                 <div class="col-sm form-group">
-                    <label for="inputId">ID:</label>
-                    <input type="number" min="0" id="inputId" name="id" ref="id">
+                    <b-form-input
+                        v-model="filter"
+                        type="search"
+                        id="filterInput"
+                        placeholder="Type to Search"
+                    ></b-form-input>
                 </div>
                 <div class="form-group" >
                     <label for="inputCategory">Category:</label>
@@ -57,14 +61,44 @@
                     </tr>
                 </tbody>
             </table>-->
-            <b-table striped hover :items="movements" :fields="fields" :per-page="perPage"></b-table>
+            <b-table striped hover :items="movements" :fields="fields" :per-page="perPage" :filter="filter"></b-table>
+
+            <b-row>
+                <b-col sm="5" md="6" class="my-1">
+                    <b-form-group
+                        label="Per page"
+                        label-cols-sm="6"
+                        label-cols-md="4"
+                        label-cols-lg="3"
+                        label-align-sm="right"
+                        label-size="sm"
+                        label-for="perPageSelect"
+                        class="mb-0"
+                    >
+                        <b-form-select
+                            v-model="perPage"
+                            id="perPageSelect"
+                            size="sm"
+                            :options="pageOptions"
+                        ></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col sm="7" md="6" class="my-1">
+                    <b-pagination
+                        v-model="currentPage"
+                        :total-rows="totalRows"
+                        :per-page="perPage"
+                        align="fill"
+                        size="sm"
+                        class="my-0"
+                    ></b-pagination>
+                </b-col>
+            </b-row>
+            </b-row>
+
         </div>
-       <!-- <div class="card-footer" style="margin:auto">
-            <pagination :data="movements" @pagination-change-page="getDataPaginate">
-                <span slot="prev-nav">&lt; Previous</span>
-                <span slot="next-nav">Next &gt;</span>
-            </pagination>
-        </div>-->
+
     </div>
 </template>
 
@@ -75,6 +109,8 @@
             return{
                 categories: '',
                 perPage: 10,
+                filter: '',
+                pageOptions:[5,10,15,20],
                 fields: [
                     {
                         key: 'id',
