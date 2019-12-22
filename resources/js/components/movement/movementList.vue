@@ -26,7 +26,7 @@
                     <input type="text" name="email">
                 </div>
             </div>
-            <table class="table table-striped">
+            <!--<table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Wallet</th>
@@ -56,14 +56,15 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table>-->
+            <b-table striped hover :items="movements" :fields="fields" :per-page="perPage"></b-table>
         </div>
-        <div class="card-footer" style="margin:auto">
+       <!-- <div class="card-footer" style="margin:auto">
             <pagination :data="movements" @pagination-change-page="getDataPaginate">
                 <span slot="prev-nav">&lt; Previous</span>
                 <span slot="next-nav">Next &gt;</span>
             </pagination>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -73,6 +74,41 @@
         data:function(){
             return{
                 categories: '',
+                perPage: 10,
+                fields: [
+                    {
+                        key: 'id',
+                        sortable : true,
+                    },
+                    {
+                        key: 'type',
+                        sortable: true,
+                    },
+                    {
+                        key: 'type_payment',
+                        sortable: true,
+                    },
+                    {
+                        key: 'category',
+                        sortable: true,
+                    },
+                    {
+                        key: 'date',
+                        sortable: true,
+                    },
+                    {
+                        key: 'value',
+                        sortable: true,
+                    },
+                    {
+                        key: 'start_balance',
+                        sortable: true,
+                    },
+                    {
+                        key: 'end_balance',
+                        sortable: true,
+                    }
+                    ],
 
             }
         },
