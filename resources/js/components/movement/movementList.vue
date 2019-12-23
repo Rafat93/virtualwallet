@@ -89,7 +89,7 @@
             </b-modal>
 
             <b-row>
-                <b-col sm="5" md="6" class="my-1">
+                <b-col sm="5" md="6" class="my-1" cols="3">
                     <b-form-group
                         label="Per page"
                         label-cols-sm="6"
@@ -105,11 +105,13 @@
                             id="perPageSelect"
                             size="sm"
                             :options="pageOptions"
+                            class="col-sm-2"
                         ></b-form-select>
                     </b-form-group>
                 </b-col>
-
-                <b-col sm="7" md="6" class="my-1">
+            </b-row>
+            <b-row align-h="center">
+                <b-col class="my-1" cols="6" >
                     <b-pagination
                         v-model="currentPage"
                         :total-rows="totalRows"
