@@ -1,6 +1,7 @@
 <template>
     <div>
         <div>
+
             <div class="row" style="text-align: center">
                 <div class="col-sm form-group">
                     <b-form-input
@@ -61,7 +62,31 @@
                     </tr>
                 </tbody>
             </table>-->
-            <b-table striped hover :items="movements" :fields="fields" :per-page="perPage" :filter="filter"></b-table>
+            <b-table striped hover :items="movements" :fields="fields" :per-page="perPage" :filter="filter" :current-page="currentPage">
+                <template v-slot:cell(name)="row">
+                    {{ row.value.first }} {{ row.value.last }}
+                </template>
+
+                <template v-slot:cell(actions)="row">
+                    <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                        Info modal
+                    </b-button>
+                    <b-button size="sm" @click="row.toggleDetails">
+                        {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+                    </b-button>
+                </template>
+
+                <template v-slot:row-details="row">
+                    <b-card>
+                        <ul>
+                            <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                        </ul>
+                    </b-card>
+                </template>
+            </b-table>
+            <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
+                <pre>{{ infoModal.content }}</pre>
+            </b-modal>
 
             <b-row>
                 <b-col sm="5" md="6" class="my-1">
@@ -95,10 +120,7 @@
                     ></b-pagination>
                 </b-col>
             </b-row>
-            </b-row>
-
         </div>
-
     </div>
 </template>
 
@@ -108,9 +130,16 @@
         data:function(){
             return{
                 categories: '',
+                currentPage: 1,
                 perPage: 10,
-                filter: '',
+                filter: null,
                 pageOptions:[5,10,15,20],
+                totalRows: 1,
+                infoModal:{
+                    id: 'info-modal',
+                    title: '',
+                    content: ''
+                },
                 fields: [
                     {
                         key: 'id',
@@ -149,7 +178,17 @@
             }
         },
 
-        props: ['movements'],
+        props: ['movements', 'numMovements'],
+        computed:{
+            sortOptions() {
+                // Create an options list from our fields
+                return this.fields
+                    .filter(f => f.sortable)
+                    .map(f => {
+                        return { text: f.label, value: f.key }
+                    })
+            }
+        },
         methods: {
             getDataPaginate: function (page = 1) {
                 this.$emit('movements-paginate',page);
@@ -158,9 +197,34 @@
                 axios.get('api/categories',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
                     .then(response=> { this.categories = response.data.data;});
             },
+            info(item, index, button) {
+                this.infoModal.title = `Row index: ${index}`
+                this.infoModal.content = JSON.stringify(item, null, 2)
+                this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+            },
+            resetInfoModal() {
+                this.infoModal.title = ''
+                this.infoModal.content = ''
+            },
+            onFiltered(filteredItems) {
+                // Trigger pagination to update the number of buttons/pages due to filtering
+                this.totalRows = filteredItems.length;
+                this.currentPage = 1
+            }
 
-        },mounted() {
+        },watch: {
+            currentPage: {
+                handler: function(value) {
+                    this.fetchData().catch(error => {
+                        console.error(error)
+                    })
+                }
+            }
+        },
+        mounted() {
             this.getCategories();
+            this.totalRows = this.numMovements;
+            console.log(this.totalRows);
         }
 
 

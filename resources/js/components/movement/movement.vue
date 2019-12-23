@@ -12,7 +12,8 @@
                 </div>
             </div>
             <div v-else>
-                <movement-list :movements="movements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
+
+                <movement-list :movements="movements" :numMovements="numMovements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
             </div>
 
         </div>
@@ -26,6 +27,8 @@
             return {
                 title: 'List Movements',
                 movements: 0,
+                numMovements: 0,
+
             }
         },
         methods: {
@@ -34,7 +37,7 @@
 
                 axios.get('api/users/'+this.$store.state.user.id+'/movements',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.movements = response.data.data;
-
+                    this.numMovements = this.movements.length;
                     console.log(response.data.data);
                     console.log(this.movements)});
 
