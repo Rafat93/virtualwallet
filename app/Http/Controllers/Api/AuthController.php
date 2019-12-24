@@ -19,7 +19,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255|regex:/^[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ ]+$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'nif' => 'required|numeric|nullable|min:9|max:9',
+            'nif' => 'required|min:1|max:9',
             'file_foto' => 'nullable|image|mimes:jpeg,jpg|max:2048',
         ]);
 

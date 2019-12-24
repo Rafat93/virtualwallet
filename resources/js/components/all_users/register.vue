@@ -6,9 +6,9 @@
                 <form>
                     <input type="text" placeholder="name" v-model="user.name" required/>
                     <input type="password" placeholder="password" v-model.trim="user.password"required/>
-                    <input type="password" placeholder="confirm password" v-model.trim="user.confirm_password"required/>
+                    <input type="password" placeholder="confirm password" v-model.trim="user.password_confirmation"required/>
                     <input type="email" placeholder="email address" v-model.trim="user.email" required/>
-                    <input type="text" placeholder="NIF" v-model.trim="user.nif" required/>
+                    <input type="text" placeholder="NIF" v-model="user.nif" required/>
                     <label for="inputPhoto" class="message" v-model="user.file_photo" style="color: #333333">Please enter a photographie:</label>
                     <input id="inputPhoto" type="file" placeholder="Photo">
                     <a class="btn btn-primary" v-on:click.prevent="register">Create</a>
@@ -26,7 +26,7 @@
                     name: "",
                     email: "",
                     password:"",
-                    confirm_password:"",
+                    password_confirmation:"",
                     nif: "",
                     file_photo: "",
                 },
@@ -39,7 +39,7 @@
             register(){
                 this.showMessage = false;
                 axios
-                .post("api/register,",this.user)
+                .post("api/register",this.user)
                 .then (response => {
                     this.$store.commit("setToken", response.data.access_token);
                     return axios.get("api/users/me");

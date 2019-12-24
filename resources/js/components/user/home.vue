@@ -4,6 +4,8 @@
         <div class="inside_content">
             Component Home
             {{type}}
+            <CommitChart></CommitChart>
+
 
         </div>
 
@@ -13,15 +15,20 @@
 </template>
 
 <script>
+
+    import CommitChart from '../graphs/test';
+
     export default {
         data: function(){
             return {
                 type: '',
                 user: '',
-
             }
         },
         name: "home",
+        components:{
+            CommitChart,
+        },
 
         methods:{
              isAdministrator: function(){

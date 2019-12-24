@@ -1,7 +1,6 @@
 <template>
     <div>
         <div>
-
             <div class="row" style="text-align: center">
                 <div class="col-sm form-group">
                     <b-form-input
@@ -13,14 +12,14 @@
                 </div>
                 <div class="form-group" >
                     <label for="inputCategory">Category:</label>
-                    <select  id="inputCategory">
+                    <select v-model="filter.category"  id="inputCategory">
                         <option value="" selected disabled>----Select an option----</option>
                         <option  v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
                     </select>
                 </div>
                 <div class="col-sm">
                     <label>Type:</label>
-                    <select  id="inputType">
+                    <select   v-model="filter.type" id="inputType">
                         <option value="" selected disabled>----Select an option----</option>
                         <option value="i">Income</option>
                         <option value="e">Expense</option>
@@ -31,37 +30,8 @@
                     <input type="text" name="email">
                 </div>
             </div>
-            <!--<table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Wallet</th>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Payment Type</th>
-                        <th>Iban</th>
-                        <th>Start Balance</th>
-                        <th>End Balance</th>
-                        <th>Value</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="movement in movements" :key="movement.id">
-                        <td>{{movement.wallet_id}}</td>
-                        <td>{{movement.date}}</td>
-                        <td>{{movement.type}}</td>
-                        <td>{{movement.type_payment}}</td>
-                        <td>{{movement.iban}}</td>
-                        <td>{{movement.start_balance}}</td>
-                        <td>{{movement.end_balance}}</td>
-                        <td>{{movement.value}}</td>
-                        <td>
-                            <a class="btn btn-sm btn-success">Details</a>
-                            <a class="btn btn-sm " >-</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>-->
+
+
             <b-table striped hover :items="movements" :fields="fields" :per-page="perPage" :filter="filter" :current-page="currentPage">
                 <template v-slot:cell(name)="row">
                     {{ row.value.first }} {{ row.value.last }}
@@ -134,7 +104,7 @@
                 categories: '',
                 currentPage: 1,
                 perPage: 10,
-                filter: null,
+                filter: '',
                 pageOptions:[5,10,15,20],
                 totalRows: 1,
                 infoModal:{
@@ -180,6 +150,7 @@
             }
         },
 
+
         props: ['movements', 'numMovements'],
         computed:{
             sortOptions() {
@@ -212,6 +183,10 @@
                 // Trigger pagination to update the number of buttons/pages due to filtering
                 this.totalRows = filteredItems.length;
                 this.currentPage = 1
+            },
+            itemsProvider: function (ctx, callback) {
+                console.log(this.filters.search)
+                console.log(this.filters.roleId)
             }
 
         },watch: {
@@ -221,6 +196,12 @@
                         console.error(error)
                     })
                 }
+            },
+            filters: {
+                handler: function () {
+                    this.$refs.table.refresh()
+                },
+                deep: true
             }
         },
         mounted() {

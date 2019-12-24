@@ -55,7 +55,7 @@ Route::middleware(['json.response'])->group(function () {
     Route::get('users/emailavailable', 'Api\UserController@emailAvailable');
 //------------------------Auth Routes---------------------------------------
     Route::post('login', 'Api\AuthController@login')->name('login');
-    Route::post('/register', 'Api\AuthController@register')->name('register');
+    Route::post('register', 'Api\AuthController@register')->name('register');
 
 });
 //-----------------------------Category Routes---------------------------------------------
