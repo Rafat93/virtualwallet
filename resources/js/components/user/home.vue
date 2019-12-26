@@ -31,31 +31,22 @@
 
 
         </div>
-
-
     </div>
-
 </template>
 
 <script>
-
-
 
     export default {
         data: function(){
             return {
                 type: '',
                 user: '',
-
                 wallet: '',
-
             }
         },
         name: "home",
         components:{
-
         },
-
         methods:{
             userType: function(){
 
@@ -75,16 +66,10 @@
         },
         mounted() {
             this.userType();
-
         }
     }
 </script>
 
 <style scoped>
-    .inside_content{
-        margin-top: 56px;
-        margin-left: 60px;
-        overflow-y: auto;
-        height: 92vh;
-    }
+
 </style>

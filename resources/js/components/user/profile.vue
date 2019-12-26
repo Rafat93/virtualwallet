@@ -4,6 +4,7 @@
         <div class="inside_content">
             <div class="content_title">
                 Profile
+                {{editingUser}}
             </div>
 
             <div class="card" style="margin-left: 80px; margin-right: 80px;" v-if="editingUser == 0">
@@ -34,7 +35,7 @@
                 <profileEdit v-on:done ="complete"></profileEdit>
             </div>
             <div v-if="editingUser == 2">
-
+                <changePassword v-on:done="complete"></changePassword>
             </div>
         </div>
 
@@ -50,14 +51,16 @@
                 editingUser : 0,
             }
         },
+       components:{
+
+       },
         methods: {
-            complete: function(user){
+            complete: function(){
                 this.editingUser = 0;
                 this.getUserInfo();
             },
             getUserInfo: function(){
                 //console.log(this.$store.state.token);
-
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data; });
 
@@ -67,6 +70,7 @@
 
         mounted() {
             this.getUserInfo();
+            this.editingUser = 0;
         }
     }
 </script>

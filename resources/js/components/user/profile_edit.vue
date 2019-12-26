@@ -63,7 +63,6 @@
                         // Copies response.data.data properties to this.user
                         // without changing this.user reference
                         Object.assign(this.user, response.data.data);
-                        console.log(this.user);
                         this.$emit('done');
                     });
 
@@ -73,7 +72,6 @@
                 axios.get('api/users/'+this.user.id,{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
                     .then(response=>{
                         Object.assign(this.user, response.data.data);
-                        console.log(this.user)
                         this.$emit('done');
                     });
 

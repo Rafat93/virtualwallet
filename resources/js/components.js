@@ -37,6 +37,9 @@ const profileEdit = Vue.component('profileEdit', ProfileEdit);
 import CreateUser from './components/administrator/create_user.vue';
 const createUser = Vue.component('createUser', CreateUser);
 
+import ChangePassword from './components/user/password_change.vue';
+const changePassword = Vue.component('changePassword', ChangePassword);
+
 
  export default {
 
@@ -53,6 +56,7 @@ const createUser = Vue.component('createUser', CreateUser);
          statisticsHomePage,
          profileEdit,
          createUser,
+         changePassword,
 
      }
  }

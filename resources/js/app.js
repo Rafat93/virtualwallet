@@ -24,17 +24,18 @@ import frontend from "./frontend_functions.js";
 
 const routes = [
     { path: '/', redirect: '/welcome' },
-    { path: '/login', component: login},
-    { path: '/welcome', component: welcome},
+    { path: '/login', component: components.values.login},
+    { path: '/welcome', component: components.values.welcome},
     { path: '/register', component: components.values.register},
-    { path: '/navbar', component: navbar},
-    { path: '/home', component: homePage},
-    { path: '/movements', component: movements },
-    { path: '/register_expense', component: registerExpense },
-    { path: '/statistics', component: statisticsHomePage },
-    { path: '/profile', component: profile },
-    { path: '/profile_edit', component: profileEdit },
-    { path: '/create_user', component: createUser},
+    { path: '/navbar', component: components.values.navbar},
+    { path: '/home', component: components.values.homePage},
+    { path: '/movements', component: components.values.movements },
+    { path: '/register_expense', component: components.values.registerExpense },
+    { path: '/statistics', component: components.values.statisticsHomePage },
+    { path: '/profile', component: components.values.profile },
+    { path: '/profile_edit', component: components.values.profileEdit },
+    { path: '/create_user', component: components.values.createUser},
+    { path: '/change_password', component: components.values.changePassword},
 
 
 ];
