@@ -2,9 +2,32 @@
     <div>
         <navbar/>
         <div class="inside_content">
-            Component Home
-            {{type}}
-            <CommitChart></CommitChart>
+            <div v-if="type == 'user'">
+                <b-row style="margin-top: 20px">
+                    <b-col style="text-align: center">
+                        <h1>Welcome back</h1>
+                        <h4>{{user.name}}</h4>
+
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col cols="3" >
+                        <div class="card ">
+                            <div class="card-header bg-info">Current Balance</div>
+                            <div class="card-body">{{wallet.balance}}€
+                            </div>
+
+
+                        </div>
+                    </b-col>
+                </b-row>
+            </div>
+            <div v-if="type == 'Administrator'">
+                hey
+            </div>
+            <div v-if="type == 'Operator'">
+
+            </div>
 
 
         </div>
@@ -23,6 +46,9 @@
             return {
                 type: '',
                 user: '',
+
+                wallet: '',
+
             }
         },
         name: "home",
@@ -31,17 +57,25 @@
         },
 
         methods:{
-             isAdministrator: function(){
+            userType: function(){
 
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data;
-                    console.log(this.user);
+                    this.getWallet();
                     this.type = this.user.type;});
 
-            },
+             },
+            getWallet: function () {
+                axios.get('api/users/'+this.user.id+'/wallet/my',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
+                    .then(response=>{this.wallet = response.data.data;
+                        console.log("Wallet:");
+                        console.log(this.wallet);
+                        });
+            }
         },
         mounted() {
-            this.isAdministrator();
+            this.userType();
+
         }
     }
 </script>

@@ -23,6 +23,7 @@ class Movement extends JsonResource
             //'email'=>$this->transfer_wallet_id->email,
             'transfer_wallet_id'=> $this->transfer_wallet_id,
             'type_payment'=> $this->type_paymentToStr(),
+            'category_id' => $this->categoryToStr(),
             // apresentar category por extenso
             'iban'=> $this->iban,
             'description'=> $this->description,

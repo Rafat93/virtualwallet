@@ -126,7 +126,7 @@
                         sortable: true,
                     },
                     {
-                        key: 'category',
+                        key: 'category_id',
                         sortable: true,
                     },
                     {

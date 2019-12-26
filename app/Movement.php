@@ -46,4 +46,69 @@ class Movement extends Model
 
         return 'Unknown';
     }
+
+    public function categoryToStr()
+    {
+        switch ($this->category_id){
+            case '1':
+                return 'Groceries';
+            case '2':
+                return 'Restaurant';
+            case '3':
+                return 'Clothes';
+            case '4':
+                return 'Shoes';
+            case '5':
+                return 'School';
+            case '6':
+                return 'Services';
+            case '7':
+                return 'Electricity';
+            case '8':
+                return 'Phone';
+            case '9':
+                return 'Fuel';
+            case '10':
+                return 'Mortgage Payment';
+            case '11':
+                return 'Car Payment';
+            case '12':
+                return 'Entertainment';
+            case '13':
+                return 'Gadget';
+            case '14':
+                return 'Computer';
+            case '15':
+                return 'Vacation';
+            case '16':
+                return 'Hobby';
+            case '17':
+                return 'Loan Repayment';
+            case '18':
+                return 'Loan';
+            case '19':
+                return 'Other Expense';
+            case '20':
+                return 'Salary';
+            case '21':
+                return 'Bonus';
+            case '22':
+                return 'Royalties';
+            case '23':
+                return 'Interensts';
+            case '24':
+                return 'Restaurant';
+            case '25':
+                return 'Dividends';
+            case '26':
+                return 'Sales';
+            case '27':
+                return 'Loan Repayment';
+            case '28':
+                return 'Loan';
+            case '29':
+                return 'Other Income';
+        }
+        return 'Unknown';
+    }
 }

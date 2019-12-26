@@ -11,6 +11,7 @@ class Wallet extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
+        'id',
         'email',
         'balance'
     ];

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use App\Wallet;
 use App\Http\Resources\Wallet as WalletResource;
 use Illuminate\Http\Request;
@@ -23,7 +22,9 @@ class WalletController extends Controller
     }
 
     public function getMyWallet($id){
-        return WalletResource::collection(Wallet::where('id',$id)->get());
+
+        $wallet =  WalletResource::collection(Wallet::where('id',$id)->get());
+        return $wallet[0];
     }
 
     public function getMyBalance($id){

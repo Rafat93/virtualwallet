@@ -88,16 +88,13 @@
             return {
                 type: '',
                 user: '',
-
             }
         },
 
         methods: {
             typeOfUser: function(){
-
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data;
-                        console.log(this.user);
                         this.type = this.user.type;});
 
             },
