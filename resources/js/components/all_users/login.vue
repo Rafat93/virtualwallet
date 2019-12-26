@@ -92,7 +92,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 #page{
-    margin-top: 50px;
+
 }
 .login-page {
     width: 360px;

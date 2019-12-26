@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div style="position: relative; z-index: 1;">
+        <div style="position: relative; z-index: 2 !important;">
             <navbarwelcome/>
         </div>
 
-        <div class="container-fluid">
-            <div class="row" id="row" style="margin-top: 56px;">
+        <div class="container-fluid" style="z-index: 1 !important;">
+            <div class="row" id="row" style="margin-top: 0px;">
                 <div class="col">
                     <img id="imagem" src="../images/computerWallet.png" alt="virtual wallet" style="z-index: -1;" width="500" height="500">
                 </div>
