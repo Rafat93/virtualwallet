@@ -9,7 +9,8 @@
             <div class="card" style="margin-left: 80px; margin-right: 80px;" v-if="editingUser == 0">
                 <div class="card-header">
                     Personal Information
-                    <button class="btn btn-sm btn-dark" style="float: right;" v-on:click="editingUser = 1">Edit</button>
+                    <button class="btn btn-sm btn-dark" style="float: right; margin-left: 5px" v-on:click="editingUser = 1">Edit</button>
+                    <button class="btn btn-sm btn-dark" style="float: right;" v-on:click="editingUser = 2">Change Password</button>
                 </div>
                 <div class="card-body ">
                     <div class="form-group">
@@ -31,6 +32,9 @@
             </div>
             <div v-if="editingUser == 1">
                 <profileEdit v-on:done ="complete"></profileEdit>
+            </div>
+            <div v-if="editingUser == 2">
+
             </div>
         </div>
 

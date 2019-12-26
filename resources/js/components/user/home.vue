@@ -11,7 +11,7 @@
                     </b-col>
                 </b-row>
                 <b-row>
-                    <b-col cols="3" >
+                    <b-col cols="3">
                         <div class="card ">
                             <div class="card-header bg-info">Current Balance</div>
                             <div class="card-body">{{wallet.balance}}€
@@ -23,7 +23,7 @@
                 </b-row>
             </div>
             <div v-if="type == 'Administrator'">
-                hey
+
             </div>
             <div v-if="type == 'Operator'">
 
@@ -39,7 +39,7 @@
 
 <script>
 
-    import CommitChart from '../graphs/test';
+
 
     export default {
         data: function(){
@@ -53,7 +53,7 @@
         },
         name: "home",
         components:{
-            CommitChart,
+
         },
 
         methods:{
