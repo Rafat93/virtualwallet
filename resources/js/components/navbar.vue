@@ -21,24 +21,27 @@
                                 </span>
                     </router-link>
                 </li>
-                <li class="has-subnav">
-                    <router-link class="nav-link" to="/register_expense">
-                        <i class="fa fa-shopping-cart fa-2x"></i>
-                        <span class="nav-text">
+                <div v-if="this.$store.state.user.type === 'user'">
+                    <li class="has-subnav">
+                        <router-link class="nav-link" to="/register_expense">
+                            <i class="fa fa-shopping-cart fa-2x"></i>
+                            <span class="nav-text">
                                     Register Expense
                                 </span>
-                    </router-link>
+                        </router-link>
 
-                </li>
-                <li class="has-subnav">
-                    <router-link class="nav-link" to="/movements">
-                        <i class="fa fa-list fa-2x"></i>
-                        <span class="nav-text">
+                    </li>
+                    <li class="has-subnav">
+                        <router-link class="nav-link" to="/movements">
+                            <i class="fa fa-list fa-2x"></i>
+                            <span class="nav-text">
                                     Movements
                                 </span>
-                    </router-link>
+                        </router-link>
 
-                </li>
+                    </li>
+                </div>
+
                 <li>
                     <router-link class="nav-link" to="/statistics">
                         <i class="fa fa-bar-chart-o fa-2x"></i>
@@ -61,6 +64,16 @@
                             <i class="fa fa-suitcase fa-2x"></i>
                             <span class="nav-text">
                                     Create Account
+                                </span>
+                        </router-link>
+                    </li>
+                </div>
+                <div v-if="this.$store.state.user.type === 'Operator'">
+                    <li>
+                        <router-link class="nav-link" to="/register_income">
+                            <i class="fa fa-suitcase fa-2x"></i>
+                            <span class="nav-text">
+                                    Create Income
                                 </span>
                         </router-link>
                     </li>

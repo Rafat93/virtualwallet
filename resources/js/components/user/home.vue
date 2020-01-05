@@ -1,7 +1,9 @@
 <template>
     <div>
         <navbar/>
+
         <div class="inside_content">
+            {{user.type}}
             <div v-if="type == 'user'">
                 <b-row style="margin-top: 20px">
                     <b-col style="text-align: center">

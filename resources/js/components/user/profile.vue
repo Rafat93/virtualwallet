@@ -3,8 +3,7 @@
         <navbar/>
         <div class="inside_content">
             <div class="content_title">
-                Profile
-                {{editingUser}}
+                Personal Information
             </div>
 
             <div class="card" style="margin-left: 80px; margin-right: 80px;" v-if="editingUser == 0">

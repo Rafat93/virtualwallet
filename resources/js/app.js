@@ -36,6 +36,7 @@ const routes = [
     { path: '/profile_edit', component: components.values.profileEdit },
     { path: '/create_user', component: components.values.createUser},
     { path: '/change_password', component: components.values.changePassword},
+    { path: '/register_income', component: components.values.registerIncome},
 
 
 ];

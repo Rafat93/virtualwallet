@@ -40,6 +40,8 @@ const createUser = Vue.component('createUser', CreateUser);
 import ChangePassword from './components/user/password_change.vue';
 const changePassword = Vue.component('changePassword', ChangePassword);
 
+import RegisterIncome from './components/operator/register_income.vue';
+const registerIncome  = Vue.component('registerIncome', RegisterIncome);
 
  export default {
 
@@ -57,6 +59,8 @@ const changePassword = Vue.component('changePassword', ChangePassword);
          profileEdit,
          createUser,
          changePassword,
+         registerIncome,
+
 
      }
  }
