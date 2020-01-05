@@ -12,7 +12,6 @@
                 </div>
             </div>
             <div v-else>
-
                 <movement-list :movements="movements" :numMovements="numMovements" @movements-paginate="getMovements" ref="movementsListRef"></movement-list>
             </div>
 

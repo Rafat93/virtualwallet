@@ -38,24 +38,47 @@
                 </template>
 
                 <template v-slot:cell(actions)="row">
-                    <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                        Info modal
-                    </b-button>
-                    <b-button size="sm" @click="row.toggleDetails">
-                        {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
-                    </b-button>
+                    <b-btn size="sm" variant="info" @click="showModal(row)">Info</b-btn>
+
                 </template>
 
-                <template v-slot:row-details="row">
-                    <b-card>
-                        <ul>
-                            <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
-                        </ul>
-                    </b-card>
-                </template>
             </b-table>
-            <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-                <pre>{{ infoModal.content }}</pre>
+
+            <b-modal id="modal-1" v-model="modal" title="Movement's full information">
+
+                <p class="font-weight-bold" style="margin-bottom: -5px;">Id:</p>
+                <p class="font-weight-light">{{rowSelected.id}}</p>
+
+                <p class="font-weight-bold" style="margin-bottom: -5px;">Type:</p>
+                <p class="font-weight-light">{{rowSelected.type}}</p>
+
+                <div v-if="rowSelected.transfer_movement_id != null">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Transfer id:</p>
+                    <p class="font-weight-light">{{rowSelected.transfer_movement_id}}</p>
+                </div>
+                <div v-if="rowSelected.transfer_wallet_id != null">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Transfer Wallet id:</p>
+                    <p class="font-weight-light">{{rowSelected.transfer_wallet_id}}</p>
+                </div>
+
+                <p class="font-weight-bold" style="margin-bottom: -5px;">Category:</p>
+                <p class="font-weight-light">{{rowSelected.category_id}}</p>
+
+                <p class="font-weight-bold" style="margin-bottom: -5px;">Start Balance:</p>
+                <p class="font-weight-light">{{rowSelected.start_balance}}</p>
+
+                <p class="font-weight-bold" style="margin-bottom: -5px;">End Balance:</p>
+                <p class="font-weight-light">{{rowSelected.end_balance}}</p>
+
+                <p class="font-weight-bold" style="margin-bottom: -5px;">Value:</p>
+                <p class="font-weight-light">{{rowSelected.value}}</p>
+
+                <div v-if="rowSelected.description != null">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Description:</p>
+                    <p class="font-weight-light">{{rowSelected.description}}</p>
+                </div>
+
+                {{rowSelected}}
             </b-modal>
 
             <b-row>
@@ -101,6 +124,10 @@
         name: "movementList",
         data:function(){
             return{
+
+                modal:false,
+                rowSelected: '',
+
                 categories: '',
                 currentPage: 1,
                 perPage: 10,
@@ -119,6 +146,10 @@
                     },
                     {
                         key: 'type',
+                        sortable: true,
+                    },
+                    {
+                        key: 'email',
                         sortable: true,
                     },
                     {
@@ -144,7 +175,11 @@
                     {
                         key: 'end_balance',
                         sortable: true,
-                    }
+                    },
+                    {
+                        key: 'actions',
+                        sortable: true,
+                    },
                     ],
 
             }
@@ -187,6 +222,10 @@
             itemsProvider: function (ctx, callback) {
                 console.log(this.filters.search)
                 console.log(this.filters.roleId)
+            },
+            showModal(row){
+                this.rowSelected = row.item;
+                this.modal = true;
             }
 
         },watch: {

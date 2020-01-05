@@ -21,7 +21,7 @@ class MovementController extends Controller
 
     public function getMyMovements($id){
         $user = User::findOrFail($id);
-        return MovementResource::collection(Movement::where('wallet_id',$user->id)->orderBy('date','ASC')->get());
+        return MovementResource::collection(Movement::where('wallet_id',$user->id)->orderBy('date','desc')->get());
     }
 
     public function store(StoreMovementRequest $request)
