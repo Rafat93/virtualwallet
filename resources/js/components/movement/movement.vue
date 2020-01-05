@@ -26,7 +26,7 @@
         data: function(){
             return {
                 title: 'List Movements',
-                movements: 0,
+                movements: [],
                 numMovements: 0,
 
             }
@@ -36,11 +36,13 @@
 
 
                 axios.get('api/users/'+this.$store.state.user.id+'/movements',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
-                    .then(response=>{this.movements = response.data.data;
-                    this.numMovements = this.movements.length;
-                    console.log(response.data.data);
-                    console.log(this.movements)});
+                    .then(response=> {
+                        this.movements = response.data.data;
+                        this.numMovements = this.movements.length;
+                        console.log(response.data.data);
+                        //console.log("Movimentos: "+this.movements)
 
+                    });
 
 
                 /*if (page == 0){

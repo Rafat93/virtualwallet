@@ -25,10 +25,10 @@
                 </b-row>
             </div>
             <div v-if="type == 'Administrator'">
-
+                Admin
             </div>
             <div v-if="type == 'Operator'">
-
+                Operator
             </div>
 
 
@@ -54,7 +54,9 @@
 
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data;
-                    this.getWallet();
+                    if(this.user.type === 'user') {
+                        this.getWallet();
+                    }
                     this.type = this.user.type;});
 
              },

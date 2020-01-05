@@ -207,7 +207,7 @@
         mounted() {
             this.getCategories();
             this.totalRows = this.numMovements;
-            console.log(this.totalRows);
+            console.log("Total Rows:"+this.totalRows);
         }
 
 

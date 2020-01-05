@@ -20,7 +20,6 @@ class MovementController extends Controller
 
     public function getMyMovements($id){
         $user = User::findOrFail($id);
-        $wallet =  WalletResource::collection(Wallet::where('email', $user->email)->get());
-        return MovementResource::collection(Movement::where('wallet_id',$wallet[0]->id)->get());
+        return MovementResource::collection(Movement::where('wallet_id',$user->id)->orderBy('date','ASC')->get());
     }
 }

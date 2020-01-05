@@ -48,6 +48,8 @@
                     this.typeofmsg = "alert-success";
                     this.message = "User Register Correctly";
                     this.showMessage = true;
+                    this.$toasted.show("Register and Authenticated!");
+                    this.$router.push('/home');
                 })
                     .catch(error => {
                         this.$store.commit("clearUserAndToken");
