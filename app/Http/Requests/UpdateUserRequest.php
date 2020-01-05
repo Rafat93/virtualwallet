@@ -25,8 +25,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|regex:/^[a-zA-Zà-ú0-9À-ú\s]+$/',
-            'password' => 'min:3|',
-            'nif' => 'nullable|min:1|max:9|',
+            'nif' => 'min:1|max:9',
             'file_foto' => 'nullable|image|mimes:jpeg,jpg|max:2048',
         ];
     }

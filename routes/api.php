@@ -32,6 +32,7 @@ Route::middleware(['auth:api','json.response'])->group(function (){
     Route::get('users/{id}', 'Api\UserController@show'); //find user
     Route::post('users', 'Api\UserController@store');
     Route::put('users/{id}', 'Api\UserController@update');
+    Route::put('users/{id}/password', 'Api\UserController@updatePassword');
     Route::delete('users/{id}', 'Api\UserController@destroy');
 
 

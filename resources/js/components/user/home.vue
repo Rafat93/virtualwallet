@@ -47,10 +47,10 @@
                 </b-row>
             </div>
             <div v-if="type == 'Administrator'">
-                Admin
+
             </div>
             <div v-if="type == 'Operator'">
-                Operator
+
             </div>
 
 

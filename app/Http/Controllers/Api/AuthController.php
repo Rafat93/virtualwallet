@@ -31,11 +31,11 @@ class AuthController extends Controller
         $request['password']=Hash::make($request['password']);
         $input = $request->all();
         $user = User::create($input);
+
         $wallet = new Wallet;
         $wallet->id = $user->id;
         $wallet->email = $user->email;
         $wallet->balance = 0;
-
         $wallet->save();
 
         return $this->createToken($request);

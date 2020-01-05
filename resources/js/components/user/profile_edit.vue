@@ -13,16 +13,11 @@
                 <p class="font-weight-bold">Name:</p>
                 <input type="text" v-model="user.name" name="name" value="" class="form-control" >
             </div>
-
             <div class="form-group">
                 <p class="font-weight-bold">Email:</p>
                 <p class="font-weight-light">{{user.email}}</p>
             </div>
-            <div class="form-group">
-                <p class="font-weight-bold">Password:</p>
-                <input type="password" class="form-control">
-            </div>
-            <div class="form-group">
+            <div class="form-group" v-if="this.$store.state.user.type === 'user'">
                 <p class="font-weight-bold">NIF:</p>
                 <input type="text" v-model="user.nif"  class="form-control" >
             </div>
@@ -50,7 +45,6 @@
         methods: {
             getUserInfo: function(){
                 //console.log(this.$store.state.token);
-
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data;
                     console.log(this.user)});
@@ -78,7 +72,6 @@
 
             }
         },
-
         mounted() {
             this.getUserInfo();
         }

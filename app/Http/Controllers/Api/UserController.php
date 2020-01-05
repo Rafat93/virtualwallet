@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\User as UserResource;
 use App\User;
@@ -43,6 +44,14 @@ class UserController extends Controller
     }
 
     public function update(UpdateUserRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->fill($request->validated());
+        $user->save();
+        return new UserResource($user);
+    }
+
+    public function updatePassword(UpdatePasswordRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->fill($request->validated());
