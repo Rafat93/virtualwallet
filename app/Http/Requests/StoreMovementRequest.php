@@ -24,7 +24,15 @@ class StoreMovementRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'wallet_id' => 'required',
+            'type' => 'required',
+            'transfer_movement_id' => 'required_if:transfer,1',
+            'type_payment' => 'in:c,bt,mb,null',
+            'mb_entity_code' => 'required_if:type_payment,mb|numeric',
+            'date' => 'required | date | before:tomorrow',
+            'start_balance' => 'required',
+            'end_balance' => 'required',
+            'value' => 'required'
         ];
     }
 }

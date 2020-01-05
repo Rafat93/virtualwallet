@@ -31,4 +31,11 @@ class MovementController extends Controller
         $movement->save();
         return response()->json(new MovementResource($movement), 201);
     }
+
+    public function update (UpdateMovementResquest $request,$id){
+        $movement = Movement::findOrFail($id);
+        $movement->fill($request->validated());
+        $movement->save();
+        return new MovementResource($movement);
+    }
 }
