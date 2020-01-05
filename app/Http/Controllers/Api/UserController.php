@@ -55,6 +55,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->fill($request->validated());
+        $user->password = Hash::make($user->password);
         $user->save();
         return new UserResource($user);
     }
