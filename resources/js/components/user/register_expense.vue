@@ -14,12 +14,15 @@
                     <div class="card-body" style="background-color: rgba(0,0,0,0.35)">
                         <div style="margin-right: 150px; margin-left: 150px;">
                             <div class="form-group">
-                                <label for="typeOfMovement">Type of movement</label>
-                                <select id="typeOfMovement" name="typeOfMovement" class="form-control">
-                                    <option value="" disabled selected>----Select a type----</option>
-                                    <option value="transfer" >Transfer to other VirtualWallet</option>
-                                    <option value = "payment">Payment to external entity</option>
-                                </select>
+                                <label>Type of movement</label>
+                                <!--<b-form-select v-model="typeOfPaymentSelected" :options="typeOfPayment" class="mb-3">
+                                    &lt;!&ndash; This slot appears above the options from 'options' prop &ndash;&gt;
+                                    <template v-slot:first>
+                                        <option :value="null" disabled>&#45;&#45; Please select an option &#45;&#45;</option>
+                                    </template>
+                                </b-form-select>-->
+                                ola
+                                {{typeOfPaymentSelected}}
                             </div>
 
                             <div v-if="transferMovement == payment" class="form-group">
@@ -96,7 +99,19 @@
                 payment : "payment",
                 paymentMovement : '',
                 bank : "bank",
-                mbPayment : "mbPayment"
+                mbPayment : "mbPayment",
+
+                typeOfPaymentSelected: '',
+                typeOfPayment:[
+                    {
+                        text: 'Transfer to other VirtualWallet',
+                        value: 'transfer'
+                    },
+                    {
+                        text: 'Payment to external entity',
+                        value: 'payment'
+                    },
+                ],
             }
         },
 
