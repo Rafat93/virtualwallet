@@ -1,6 +1,6 @@
 <template>
     <div id="navbarwelcome">
-        <nav  class="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav  class="navbar navbar-expand-md" style="background-color: #f6ac00;">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             </div>
             <div class="mx-auto order-0">
@@ -83,7 +83,7 @@
 
             <ul class="logout">
                 <li>
-                    <a v-on:click.prevent="logout">
+                    <a v-on:click.prevent="logout" style="color: #f6ac00">
                         <i class="fa fa-power-off fa-2x"></i>
                         <span class="nav-text">
                                     Logout
@@ -186,7 +186,7 @@
         display:table;
         border-collapse:collapse;
         border-spacing:0;
-        color:#999;
+        color: #d7d7d7;
         font-family: arial;
         font-size: 14px;
         text-decoration:none;

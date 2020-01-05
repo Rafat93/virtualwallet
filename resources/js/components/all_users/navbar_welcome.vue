@@ -10,7 +10,7 @@
             </div>
             <div class="mx-auto order-0">
                 <a class="navbar-brand mx-auto" style="color: white">VirtualWallet</a>
-               
+
             </div>
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">

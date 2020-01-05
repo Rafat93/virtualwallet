@@ -1,9 +1,7 @@
 <template>
     <div>
         <navbar/>
-
         <div class="inside_content">
-            {{user.type}}
             <div v-if="type == 'user'">
                 <b-row style="margin-top: 20px">
                     <b-col style="text-align: center">
@@ -13,7 +11,31 @@
                     </b-col>
                 </b-row>
                 <b-row>
-                    <b-col cols="3">
+                    <b-col>
+                        <b-card style="margin-right: 200px; margin-left: 200px;" align="center" header-bg-variant="info">
+                            <template v-slot:header>
+                                <h4 class="mb-2">Information about your wallet</h4>
+                            </template>
+
+                            <b-row>
+                                <b-col cols="2" >
+                                    <b-card
+                                        border-variant="secondary"
+                                        header="Current Balance"
+                                        header-border-variant="secondary"
+                                        align="center"
+                                    >
+                                        <b-card-text>{{wallet.balance}}€</b-card-text>
+                                    </b-card>
+                                </b-col>
+                            </b-row>
+
+                                <!--information here-->
+
+                        </b-card>
+                    </b-col>
+
+                    <!--<b-col cols="3">
                         <div class="card ">
                             <div class="card-header bg-info">Current Balance</div>
                             <div class="card-body">{{wallet.balance}}€
@@ -21,7 +43,7 @@
 
 
                         </div>
-                    </b-col>
+                    </b-col>-->
                 </b-row>
             </div>
             <div v-if="type == 'Administrator'">

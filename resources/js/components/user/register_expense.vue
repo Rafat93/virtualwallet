@@ -131,7 +131,7 @@
                     .then(response=> {this.categories = response.data.data; });
             },
             cancel(){
-                this.$router.push('/welcome');
+                this.$router.push('/home');
             },
             submit(){
 
