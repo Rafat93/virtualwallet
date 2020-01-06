@@ -3,11 +3,11 @@
         <navbar/>
         <div class="inside_content" >
             <div class="content_title">
-                Register a new expense
+                Register a new income
             </div>
             <div class="card" style="margin-left: 200px; margin-right: 200px;">
                 <div class="card-header">
-                    Information about the expense
+                    Information about the income
                 </div>
                 <div class="card-body" style="background-color: rgba(0,0,0,0.35)">
                     <div style="margin-right: 150px; margin-left: 150px;">

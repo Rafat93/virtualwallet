@@ -25,10 +25,31 @@ class MovementController extends Controller
         return MovementResource::collection(Movement::where('wallet_id',$user->id)->orderBy('date','desc')->get());
     }
 
-    public function store(StoreMovementRequest $request)
+    public function getMyLastMovements($id){
+        $user = User::findOrFail($id);
+        return MovementResource::collection(Movement::where('wallet_id',$user->id)->orderBy('date','desc')->take(5)->get());
+    }
+
+    public function storeExpense(StoreMovementRequest $request)
     {
         $movement = new Movement();
         $movement->fill($request->all());
+        //is a transfer, have to create an income in the other wallet
+        $wallet = Wallet::collection(Wallet::where('id',$movement->wallet_id)->get());
+        if($movement->transfer == 1){
+
+        }
+        $movement->start_balance = $lastMovement->end_balance;
+        $movement->end_balance = $movement->start_balance-$movement->value;
+        $movement->save();
+        return response()->json(new MovementResource($movement), 201);
+    }
+
+    public function storeIncome(StoreMovementRequest $request)
+    {
+        $movement = new Movement();
+        $movement->fill($request->all());
+
         $movement->save();
         return response()->json(new MovementResource($movement), 201);
     }

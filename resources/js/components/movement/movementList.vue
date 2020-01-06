@@ -148,7 +148,6 @@
 
                 modal:false,
                 rowSelected: '',
-
                 categories: '',
                 currentPage: 1,
                 perPage: 10,

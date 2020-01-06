@@ -26,8 +26,16 @@ Route::middleware(['auth:api','json.response'])->group(function (){
     //movements
     Route::get('movements','Api\MovementController@index');
     Route::get('users/{id}/movements','Api\MovementController@getMyMovements');
-    Route::post('movements', 'Api\MovementController@store');
+    Route::get('users/{id}/last','Api\MovementController@getMyLastMovements');
+    Route::post('movements/expense', 'Api\MovementController@storeExpense');
+    Route::post('movements/income', 'Api\MovementController@storeExpense');
     Route::put('movements/{id}','Api\MovementController@update');
+
+    //operators
+
+
+    //administrator
+
 
     //user
     Route::get('users/me', 'Api\UserController@myProfile');

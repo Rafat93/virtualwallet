@@ -7,7 +7,6 @@
                     <b-col style="text-align: center">
                         <h1>Welcome back</h1>
                         <h4>{{user.name}}</h4>
-
                     </b-col>
                 </b-row>
                 <b-row>
@@ -35,7 +34,11 @@
                                         header-border-variant="secondary"
                                         align="center"
                                     >
-
+                                        <b-table striped hover :items="movements" :fields="fields" >
+                                            <template v-slot:cell(name)="row">
+                                                {{ row.value.first }} {{ row.value.last }}
+                                            </template>
+                                        </b-table>
                                     </b-card>
                                 </b-col>
                             </b-row>
@@ -47,12 +50,26 @@
                 </b-row>
             </div>
             <div v-if="type == 'Administrator'">
+                <b-row style="margin-top: 20px">
+                    <b-col style="text-align: center">
+                        <h1>Welcome back Admin</h1>
+                        <h4>{{user.name}}</h4>
 
+                    </b-col>
+                </b-row>
             </div>
             <div v-if="type == 'Operator'">
+                <b-row style="margin-top: 20px">
+                    <b-col style="text-align: center">
+                        <h1>Welcome back Operator</h1>
+                        <h4>{{user.name}}</h4>
 
+                    </b-col>
+                </b-row>
+                <b-row>
+
+                </b-row>
             </div>
-
 
         </div>
     </div>
@@ -66,6 +83,29 @@
                 type: '',
                 user: '',
                 wallet: '',
+                movements: [],
+                fields: [
+                    {
+                        key: 'type',
+                        sortable: true,
+                    },
+                    {
+                        key: 'date',
+                        sortable: true,
+                    },
+                    {
+                        key: 'value',
+                        sortable: true,
+                    },
+                    {
+                        key: 'start_balance',
+                        sortable: true,
+                    },
+                    {
+                        key: 'end_balance',
+                        sortable: true,
+                    }
+                ],
             }
         },
         name: "home",
@@ -76,9 +116,6 @@
 
                 axios.get('api/users/me',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
                     .then(response=>{this.user = response.data.data;
-                    if(this.user.type === 'user') {
-                        this.getWallet();
-                    }
                     this.type = this.user.type;});
 
              },
@@ -88,10 +125,22 @@
                         console.log("Wallet:");
                         console.log(this.wallet);
                         });
-            }
+            },
+            getLastMovements: function (){
+                axios.get('api/users/'+this.$store.state.user.id+'/last',{'headers': {'Authorization': 'Bearer '+this.$store.state.token}})
+                    .then(response=> {
+                        this.movements = response.data.data;
+                    });
+
+
+            },
         },
         mounted() {
             this.userType();
+            if(this.type === 'user') {
+                this.getWallet();
+                this.getLastMovements();
+            }
         }
     }
 </script>
