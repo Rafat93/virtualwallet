@@ -52,13 +52,32 @@
                 <p class="font-weight-bold" style="margin-bottom: -5px;">Type:</p>
                 <p class="font-weight-light">{{rowSelected.type}}</p>
 
+                <p class="font-weight-bold" style="margin-bottom: -5px;">Date:</p>
+                <p class="font-weight-light">{{rowSelected.date}}</p>
+
                 <div v-if="rowSelected.transfer_movement_id != null">
                     <p class="font-weight-bold" style="margin-bottom: -5px;">Transfer id:</p>
                     <p class="font-weight-light">{{rowSelected.transfer_movement_id}}</p>
                 </div>
-                <div v-if="rowSelected.transfer_wallet_id != null">
-                    <p class="font-weight-bold" style="margin-bottom: -5px;">Transfer Wallet id:</p>
+                <div v-if="(rowSelected.transfer_wallet_id != null && rowSelected.transfer_wallet_id != '-' )&& rowSelected.type == 'Income'">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Email (sender):</p>
                     <p class="font-weight-light">{{rowSelected.transfer_wallet_id}}</p>
+                </div>
+                <div v-if="(rowSelected.transfer_wallet_id != null && rowSelected.transfer_wallet_id != '-' ) && rowSelected.type == 'Expense'">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Email (receiver):</p>
+                    <p class="font-weight-light">{{rowSelected.transfer_wallet_id}}</p>
+                </div>
+                <div v-if="rowSelected.iban != null ">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Iban:</p>
+                    <p class="font-weight-light">{{rowSelected.iban}}</p>
+                </div>
+                <div v-if="rowSelected.mb_entity_code != null ">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Entity:</p>
+                    <p class="font-weight-light">{{rowSelected.mb_entity_code}}</p>
+                </div>
+                <div v-if="rowSelected.mb_payment_reference != null ">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Reference:</p>
+                    <p class="font-weight-light">{{rowSelected.mb_payment_reference}}</p>
                 </div>
 
                 <p class="font-weight-bold" style="margin-bottom: -5px;">Category:</p>
@@ -77,8 +96,10 @@
                     <p class="font-weight-bold" style="margin-bottom: -5px;">Description:</p>
                     <p class="font-weight-light">{{rowSelected.description}}</p>
                 </div>
-
-                {{rowSelected}}
+                <div v-if="rowSelected.source_description != null">
+                    <p class="font-weight-bold" style="margin-bottom: -5px;">Source Description:</p>
+                    <p class="font-weight-light">{{rowSelected.source_description}}</p>
+                </div>
             </b-modal>
 
             <b-row>

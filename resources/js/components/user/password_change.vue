@@ -46,9 +46,7 @@
         },
         methods: {
             makeToast(toaster, append = false) {
-                console.log("Entrou toast");
-                console.log(this.variant+"/"+this.toaster);
-                this.$bvToast.toast(this.message_toast, {
+               this.$bvToast.toast(this.message_toast, {
                     title: this.title_toast,
                     solid: true,
                     toaster: toaster,
@@ -73,7 +71,6 @@
                 console.log("Nova:"+this.hash);
                 console.log (this.user.password);
                 if (!bcrypt.compareSync(this.old_password,this.user.password)){
-                    console.log("PASSOU");
                     this.message_toast = "Old Password doesn't match!";
                     this.title_toast = "Wrong old Password";
                     this.variant = 'warning';
@@ -82,7 +79,6 @@
                     return;
                 }
                 if(!this.password === this.password_confirmation){
-                    console.log("Diferentes")
                     this.message_toast = "Confirm and New Password doesn't match each other !";
                     this.title_toast = "Wrong Confirmation";
                     this.variant = 'warning';

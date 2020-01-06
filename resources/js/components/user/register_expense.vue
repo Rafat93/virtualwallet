@@ -130,10 +130,23 @@
                 axios.get('api/categories',{'headers': {'Authorization': 'Bearer '+ this.$store.state.token}})
                     .then(response=> {this.categories = response.data.data; });
             },
+            makeToast(toaster, append = false) {
+                console.log(this.variant+"/"+this.toaster);
+                this.$bvToast.toast(this.message_toast, {
+                    title: this.title_toast,
+                    solid: true,
+                    toaster: toaster,
+                    variant: this.variant,
+                    autoHideDelay: 5000,
+                    appendToast: append,
+                })
+            },
             cancel(){
                 this.$router.push('/home');
             },
             submit(){
+
+
 
             }
         },
