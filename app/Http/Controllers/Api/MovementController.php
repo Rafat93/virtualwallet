@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\WalletController;
 use App\Http\Requests\StoreMovementRequest;
+use App\Http\Requests\UpdateMovementRequest;
 use App\Http\Resources\Movement as MovementResource;
 use App\Movement;
 use App\User;
@@ -32,10 +33,17 @@ class MovementController extends Controller
         return response()->json(new MovementResource($movement), 201);
     }
 
-    public function update (UpdateMovementResquest $request,$id){
+    public function update (UpdateMovementRequest $request,$id){
         $movement = Movement::findOrFail($id);
         $movement->fill($request->validated());
         $movement->save();
         return new MovementResource($movement);
+    }
+
+    public function destroy($id)
+    {
+        $movement = Movement::findOrFail($id);
+        $movement->delete();
+        return response()->json(null, 204);
     }
 }

@@ -28,22 +28,22 @@
                                         <b-card-text>{{wallet.balance}}€</b-card-text>
                                     </b-card>
                                 </b-col>
+                                <b-col>
+                                    <b-card
+                                        border-variant="secondary"
+                                        header="Last Movements"
+                                        header-border-variant="secondary"
+                                        align="center"
+                                    >
+
+                                    </b-card>
+                                </b-col>
                             </b-row>
 
                                 <!--information here-->
 
                         </b-card>
                     </b-col>
-
-                    <!--<b-col cols="3">
-                        <div class="card ">
-                            <div class="card-header bg-info">Current Balance</div>
-                            <div class="card-body">{{wallet.balance}}€
-                            </div>
-
-
-                        </div>
-                    </b-col>-->
                 </b-row>
             </div>
             <div v-if="type == 'Administrator'">

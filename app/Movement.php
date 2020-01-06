@@ -30,6 +30,14 @@ class Movement extends Model
         return 'Unknown';
     }
 
+    public function walletToEmail(){
+        if($this->transfer_wallet_id != null) {
+            $user = User::findOrFail($this->transfer_wallet_id);
+            return $user->email;
+        }
+        return null;
+    }
+
     public function type_paymentToStr()
     {
         switch ($this->type_payment) {
@@ -95,9 +103,9 @@ class Movement extends Model
             case '22':
                 return 'Royalties';
             case '23':
-                return 'Interensts';
+                return 'Interests';
             case '24':
-                return 'Restaurant';
+                return 'Gifts';
             case '25':
                 return 'Dividends';
             case '26':

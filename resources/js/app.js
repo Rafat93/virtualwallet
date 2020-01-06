@@ -26,9 +26,11 @@ Vue.use(Toasted, {
 import store from "./stores/global-store";
 import frontend from "./frontend_functions.js";
 
+
 const routes = [
     { path: '/', redirect: '/welcome' },
-    { path: '/login', component: components.values.login},
+    { path: '/login',
+        component: components.values.login},
     { path: '/welcome', component: components.values.welcome},
     { path: '/register', component: components.values.register},
     { path: '/navbar', component: components.values.navbar},
@@ -66,9 +68,9 @@ const app = new Vue({
     store,
     frontend,
     created() {
-        console.log("-----");
-        console.log(this.$store.state.user);
+        //console.log("-----");
+        //console.log(this.$store.state.user);
         this.$store.commit("loadTokenAndUserFromSession");
-        console.log(this.$store.state.user);
+       // console.log(this.$store.state.user);
     }
 }).$mount('#app');
