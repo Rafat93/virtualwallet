@@ -149,7 +149,8 @@
                         sortable: true,
                     },
                     {
-                        key: 'email',
+                        key: 'transfer_wallet_id',
+                        label: 'Email',
                         sortable: true,
                     },
                     {

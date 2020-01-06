@@ -35,7 +35,7 @@ class Movement extends Model
             $user = User::findOrFail($this->transfer_wallet_id);
             return $user->email;
         }
-        return null;
+        return "-";
     }
 
     public function type_paymentToStr()
